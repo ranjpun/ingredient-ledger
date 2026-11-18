@@ -381,3 +381,65 @@ test("Gluten-free category, allergen profile and Ledger health rating on a produ
   await expect(card.locator(".labellink").first()).toContainText("Nutrition label");
   await expect(card.locator(".labellink").first()).toHaveAttribute("href", /nutrition_en\.jpg$/);
 });
+
+test("restaurant distances convert between kilometres and miles without changing search coverage", async ({ page }) => {
+  const overpassQueries = [];
+  await page.route("**/*", async route => {
+    const url = new URL(route.request().url());
+    if (url.origin === appOrigin) return route.continue();
+    const json = body => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
+    if (url.hostname.includes("overpass")) {
+      const body = route.request().postData() || "";
+      overpassQueries.push(decodeURIComponent(body.slice(body.indexOf("=") + 1)));
+      return json({ elements: [] });
+    }
+    if (url.hostname === "nominatim.openstreetmap.org" && url.searchParams.get("q")) {
+      return json([{ lat: "42.3314", lon: "-83.0458", display_name: "Detroit, Michigan" }]);
+    }
+    if (url.hostname === "nominatim.openstreetmap.org") {
+      return json(url.searchParams.get("amenity") === "restaurant"
+        ? [{ osm_type: "node", osm_id: 1, lat: "42.333", lon: "-83.046", name: "Green Bowl", category: "amenity", type: "restaurant", extratags: { "diet:vegan": "yes" } }]
+        : []);
+    }
+    if (url.hostname === "prices.openfoodfacts.org") {
+      return json({ items: [{ location: { osm_lat: "42.9", osm_lon: "-83.0458", osm_name: "Far shop" } }] });
+    }
+    return json({ features: [] });
+  });
+
+  await page.goto("/#eat");
+  const radius = page.locator("#radius");
+  const unit = page.locator("#distance-unit");
+  await expect(unit).toHaveValue("km");
+  await radius.selectOption("6000");
+  await expect(radius.locator("option:checked")).toHaveText("6 km");
+  await page.locator("#place").fill("Detroit");
+  await page.locator("#eatgo").click();
+  await expect(page.locator("#eatlist")).toContainText("Green Bowl");
+  await expect(page.locator("#eatlist [data-distance-meters]")).toContainText(/^\d+\.\d+ km away$/);
+  await expect.poll(() => overpassQueries.length).toBeGreaterThan(0);
+  expect(overpassQueries.every(query => query.includes("around:6000,42.3314,-83.0458"))).toBe(true);
+
+  const queriesBeforeUnitChange = overpassQueries.length;
+  await unit.selectOption("mi");
+  await expect(radius).toHaveValue("6000");
+  await expect(radius.locator("option:checked")).toHaveText("3.7 mi");
+  await expect(page.locator("#eatlist [data-distance-meters]")).toContainText(/^\d+\.\d+ mi away$/);
+  expect(overpassQueries).toHaveLength(queriesBeforeUnitChange);
+
+  await page.locator("#eatgo").click();
+  await expect.poll(() => overpassQueries.length).toBeGreaterThan(queriesBeforeUnitChange);
+  expect(overpassQueries.every(query => query.includes("around:6000,42.3314,-83.0458"))).toBe(true);
+
+  await page.evaluate(() => window.findNearMe("1234567890123", "Tofu"));
+  await expect(page.locator("#nearseen")).toContainText("within 31.1 mi yet");
+  await expect(page.locator("#nearseen")).toContainText(/Far shop, \d+\.\d+ mi away/);
+  await unit.selectOption("km");
+  await expect(page.locator("#nearseen")).toContainText("within 50 km yet");
+  await expect(page.locator("#nearseen")).toContainText(/Far shop, \d+\.\d+ km away/);
+
+  await unit.selectOption("mi");
+  await page.reload();
+  await expect(page.locator("#distance-unit")).toHaveValue("mi");
+  await expect(page.locator("#radius option:checked")).toHaveText("1.9 mi");
+});

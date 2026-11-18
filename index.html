@@ -365,7 +365,7 @@ details.raw summary{cursor:pointer;font-size:12.5px;color:var(--dim);padding:2px
 
 /* ---------- restaurants ---------- */
 .eatbox{display:grid;gap:16px}
-.eatgrid{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:end}
+.eatgrid{display:grid;grid-template-columns:1fr auto auto auto;gap:10px;align-items:end}
 .eatgrid .grow{min-width:0}
 select.field-in{appearance:none;background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%238b8376' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 12px center;padding-right:32px;cursor:pointer}
 @media (max-width:760px){.eatgrid{grid-template-columns:1fr 1fr}.eatgrid .grow{grid-column:1/-1}}
@@ -1054,6 +1054,12 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
           <label class="lbl2" for="radius">Within</label>
           <select id="radius" class="field-in">
             <option value="1500">1.5 km</option><option value="3000" selected>3 km</option><option value="6000">6 km</option><option value="12000">12 km</option><option value="25000">25 km</option><option value="50000">50 km</option>
+          </select>
+        </div>
+        <div>
+          <label class="lbl2" for="distance-unit">Distance unit</label>
+          <select id="distance-unit" class="field-in">
+            <option value="km">Kilometres</option><option value="mi">Miles</option>
           </select>
         </div>
         <div style="display:flex;gap:8px">
@@ -3101,7 +3107,22 @@ function haversine(a, b){
   const s = Math.sin(dLat/2)**2 + Math.cos(r(a.lat)) * Math.cos(r(b.lat)) * Math.sin(dLon/2)**2;
   return 2 * R * Math.asin(Math.sqrt(s));
 }
-const fmtDist = m => m < 950 ? Math.round(m / 10) * 10 + " m" : (m / 1000).toFixed(1) + " km";
+let distanceUnit = store.get("il-distance-unit") === "mi" ? "mi" : "km";
+const DISTANCE_METERS = {km:1000, mi:1609.344};
+const fmtDist = m => {
+  const value = m / DISTANCE_METERS[distanceUnit], digits = value < 1 ? 2 : 1;
+  return Number(value.toFixed(digits)) + " " + distanceUnit;
+};
+function updateRadiusLabels(){
+  const radius = $("#radius"), selected = radius.value;
+  [...radius.options].forEach(option => { option.textContent = fmtDist(+option.value); });
+  radius.value = selected;
+}
+function refreshDistanceDisplays(){
+  $$("[data-distance-meters]").forEach(el => {
+    el.textContent = fmtDist(+el.dataset.distanceMeters) + (el.dataset.distanceSuffix || "");
+  });
+}
 const OVERPASS = ["https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter", "https://overpass.private.coffee/api/interpreter"];
 /* Race every Overpass server at once (they are often overloaded); first good answer wins. */
 async function overpass(query, timeoutMs){
@@ -3279,6 +3300,7 @@ async function eatSearch(center, label, alts){
   const R = +$("#radius").value;
   const shop = EAT.mode === "shop";
   const short = esc(label.split(",").slice(0,3).join(","));
+  const radiusLabel = () => fmtDist(R);
   const src = {overpass:"loading", fast:"loading"};
   const byId = new Map();
   let renderTimer = null;
@@ -3291,9 +3313,10 @@ async function eatSearch(center, label, alts){
     const srcLine = '<div class="note-sm" style="margin-top:6px">Sources: OpenStreetMap via Nominatim &amp; Photon ' + (src.fast === "loading" ? "(searching…)" : "✓") +
       ' · Overpass detailed diet tags ' + ({loading:"(still searching…)", ok:"✓", down:"(busy right now — results above come from the other sources)"})[src.overpass] + '</div>';
     if(n) setEatStatus('<div class="msg">' + (busy ? '<span class="spinner"></span> ' : '') + '<b>' + n + ' ' + (shop ? "food store" : "place") + (n === 1 ? "" : "s") + '</b> ' + (shop ? "" : "with vegetarian or vegan food ") + 'near <b>' + short + '</b>' + (busy ? " so far" : "") + '.' + srcLine + alt + '</div>');
-    else if(busy) setEatStatus('<div class="msg"><span class="spinner"></span> Searching ' + (shop ? "grocery and food stores" : "vegetarian and vegan places") + ' within ' + (R/1000) + ' km of <b>' + short + '</b>…' + srcLine + '</div>');
-    else setEatStatus('<div class="msg">No ' + (shop ? "food stores" : "vegetarian or vegan places") + ' found within ' + (R/1000) + ' km of <b>' + short + '</b>. OpenStreetMap coverage varies by city — try a bigger radius, or the links below to search other directories.' + srcLine + alt + '</div>');
+    else if(busy) setEatStatus('<div class="msg"><span class="spinner"></span> Searching ' + (shop ? "grocery and food stores" : "vegetarian and vegan places") + ' within ' + radiusLabel() + ' of <b>' + short + '</b>…' + srcLine + '</div>');
+    else setEatStatus('<div class="msg">No ' + (shop ? "food stores" : "vegetarian or vegan places") + ' found within ' + radiusLabel() + ' of <b>' + short + '</b>. OpenStreetMap coverage varies by city — try a bigger radius, or the links below to search other directories.' + srcLine + alt + '</div>');
   };
+  EAT.refreshStatus = status;
   const add = (els) => {
     if(seq !== EAT.seq) return;
     let changed = false;
@@ -3366,8 +3389,8 @@ async function nearbySightings(code, seq){
     const near = items.filter(i => i.d < 50000).slice(0, 8);
     box.innerHTML = '<div class="panel"><h3>Recently seen near you — “' + esc(EAT.product || code) + '”</h3>' +
       (near.length ? '<div class="seenlist">' + near.map(i => { const L0 = i.location;
-        return '<div class="seen"><div><b>' + esc(L0.osm_name || L0.osm_brand || "A shop") + '</b> <span>' + esc([L0.osm_address_city, L0.osm_address_country].filter(Boolean).join(", ")) + ' · ' + fmtDist(i.d) + '</span></div><div>' + (i.price != null ? esc(i.price + " " + (i.currency || "")) + ' · ' : '') + '<span>seen ' + esc(i.date || "") + '</span> · <a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=' + L0.osm_lat + ',' + L0.osm_lon + '">directions ↗</a></div></div>'; }).join("") + '</div>'
-        : '<p>No shopper has reported this exact product within 50 km yet' + (items.length ? ' (nearest report: ' + esc(items[0].location.osm_name || "a shop") + ', ' + fmtDist(items[0].d) + ' away)' : '') + '. The stores listed below may still stock it — use “Check stock”, or call ahead.</p>') +
+        return '<div class="seen"><div><b>' + esc(L0.osm_name || L0.osm_brand || "A shop") + '</b> <span>' + esc([L0.osm_address_city, L0.osm_address_country].filter(Boolean).join(", ")) + ' · <span data-distance-meters="' + i.d + '">' + fmtDist(i.d) + '</span></span></div><div>' + (i.price != null ? esc(i.price + " " + (i.currency || "")) + ' · ' : '') + '<span>seen ' + esc(i.date || "") + '</span> · <a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=' + L0.osm_lat + ',' + L0.osm_lon + '">directions ↗</a></div></div>'; }).join("") + '</div>'
+        : '<p>No shopper has reported this exact product within <span data-distance-meters="50000">' + fmtDist(50000) + '</span> yet' + (items.length ? ' (nearest report: ' + esc(items[0].location.osm_name || "a shop") + ', <span data-distance-meters="' + items[0].d + '" data-distance-suffix=" away">' + fmtDist(items[0].d) + ' away</span>)' : '') + '. The stores listed below may still stock it — use “Check stock”, or call ahead.</p>') +
       '<p class="note-sm" style="margin:8px 0 0">From Open Prices (photographed price tags): proof it was on the shelf that day, not live stock.</p></div>';
   }catch(err){ if(seq === EAT.seq) box.innerHTML = '<div class="note-sm">Open Prices didn\'t answer (' + esc(err.message) + ').</div>'; }
 }
@@ -3419,7 +3442,7 @@ function storeHTML(p){
   const ob = p.open === true ? '<span class="openbadge open">Open now</span>' : p.open === false ? '<span class="openbadge closed">Closed now</span>' : "";
   return '<article class="place" id="pl-' + p.id + '" data-pid="' + p.id + '">' +
     '<div style="display:flex;gap:12px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap"><h4>' + esc(t.name) + '</h4><div class="badges">' + ob + '<span class="badge" style="color:' + c.col + ';background:' + c.col + '1a;border-color:' + c.col + '40"><i></i>' + c.label + '</span></div></div>' +
-    '<div class="meta"><span>' + fmtDist(p.dist) + ' away</span>' + (t.shop || t.amenity ? '<span>' + esc((t.shop || t.amenity).replace(/_/g, " ")) + '</span>' : '') + (t.brand ? '<span>' + esc(t.brand) + '</span>' : '') + (addr ? '<span>' + esc(addr) + '</span>' : '') + '</div>' +
+    '<div class="meta"><span data-distance-meters="' + p.dist + '" data-distance-suffix=" away">' + fmtDist(p.dist) + ' away</span>' + (t.shop || t.amenity ? '<span>' + esc((t.shop || t.amenity).replace(/_/g, " ")) + '</span>' : '') + (t.brand ? '<span>' + esc(t.brand) + '</span>' : '') + (addr ? '<span>' + esc(addr) + '</span>' : '') + '</div>' +
     '<div class="meta">' + (t.opening_hours ? 'Hours: ' + esc(t.opening_hours.slice(0,110)) : 'Hours not listed') + (t.organic ? ' · organic: ' + esc(t.organic) : '') + ((t["diet:vegan"] || t["diet:vegetarian"]) ? ' · tagged vegan/vegetarian-friendly' : '') + '</div>' +
     '<div class="links">' + (web ? '<a class="lnk main" target="_blank" rel="noopener" href="' + esc(/^https?:/i.test(web) ? web : "https://" + web) + '">Website ↗</a>' : '') +
       '<a class="lnk" target="_blank" rel="noopener" href="' + esc(stock) + '">Check stock: ' + esc(want) + ' ↗</a>' +
@@ -3460,7 +3483,7 @@ function placeHTML(p){
   if(p.cat === "veg_friendly") other.push("Cuisine usually has many vegetarian dishes — ask about ghee, egg and stock");
   return '<article class="place" id="pl-' + p.id + '" data-pid="' + p.id + '">' +
     '<div style="display:flex;gap:12px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap"><h4>' + esc(t.name) + '</h4><div class="badges">' + (p.open === true ? '<span class="openbadge open">Open now</span>' : p.open === false ? '<span class="openbadge closed">Closed now</span>' : '') + '<span class="badge" style="color:' + c.col + ';background:' + c.col + '1a;border-color:' + c.col + '40"><i></i>' + c.label + '</span></div></div>' +
-    '<div class="meta"><span>' + fmtDist(p.dist) + ' away</span>' + (cuis.length ? '<span>' + esc(cuis.join(", ")) + '</span>' : '') + (t.amenity ? '<span>' + esc(t.amenity.replace(/_/g," ")) + '</span>' : '') + (addr ? '<span>' + esc(addr) + '</span>' : '') + '</div>' +
+    '<div class="meta"><span data-distance-meters="' + p.dist + '" data-distance-suffix=" away">' + fmtDist(p.dist) + ' away</span>' + (cuis.length ? '<span>' + esc(cuis.join(", ")) + '</span>' : '') + (t.amenity ? '<span>' + esc(t.amenity.replace(/_/g," ")) + '</span>' : '') + (addr ? '<span>' + esc(addr) + '</span>' : '') + '</div>' +
     '<div class="meta">' + [hasVegan ? "Vegan dishes available" : "", hasVeg ? "Vegetarian dishes available" : "", ...other].filter(Boolean).map(esc).join(" · ") +
       (t.opening_hours ? '<br>Hours: ' + esc(t.opening_hours.slice(0,110)) : '') + (phone ? '<br>' + esc(phone) : '') + '</div>' +
     '<div class="links">' +
@@ -3653,6 +3676,15 @@ $("#place").addEventListener("keydown", e => { if(e.key === "Enter") eatFromText
 $("#place").addEventListener("input", e => { const v = e.target.value.trim(); if(PLACE_SUG.some(x => x.label === v)) eatFromText(); else suggestPlacesDeb(v); });
 $("#nearme").addEventListener("click", eatNearMe);
 $("#radius").addEventListener("change", () => { if(EAT.center) eatSearch(EAT.center, EAT.label, EAT.alts); });
+$("#distance-unit").value = distanceUnit;
+updateRadiusLabels();
+$("#distance-unit").addEventListener("change", e => {
+  distanceUnit = e.target.value === "mi" ? "mi" : "km";
+  store.set("il-distance-unit", distanceUnit);
+  updateRadiusLabels();
+  refreshDistanceDisplays();
+  if(EAT.refreshStatus) EAT.refreshStatus();
+});
 $$("[data-city]").forEach(b => b.addEventListener("click", () => { $("#place").value = b.dataset.city; eatFromText(); }));
 $("#eatchips").addEventListener("click", e => { const b = e.target.closest(".chip"); if(!b) return; EAT.cat = b.dataset.pcat; EAT.limit = 30; renderEat(); });
 $("#eatsort").addEventListener("click", e => { const b = e.target.closest(".chip"); if(!b) return; EAT.sort = b.dataset.sort; renderEat(); });
