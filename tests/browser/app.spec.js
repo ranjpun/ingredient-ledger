@@ -214,6 +214,119 @@ test("Restaurant search still returns places when Overpass is unavailable", asyn
   await expect(page.locator("#eatlist")).toContainText("Green Bowl", { timeout: 15000 });
 });
 
+test("Restaurant fallback rejects bank names but keeps Indian restaurants", async ({ page }) => {
+  await page.route("**/*", route => {
+    const url = new URL(route.request().url());
+    if (url.origin === appOrigin) return route.continue();
+    const json = body => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
+    if (url.hostname.includes("overpass")) return route.abort();
+    if (url.hostname === "nominatim.openstreetmap.org" && url.searchParams.get("q")) {
+      return json([{ lat: "42.3314", lon: "-83.0458", display_name: "Detroit, Michigan" }]);
+    }
+    if (url.hostname === "nominatim.openstreetmap.org") {
+      return json(url.searchParams.get("amenity") === "restaurant" ? [
+        { osm_type: "node", osm_id: 32, lat: "42.333", lon: "-83.046", name: "State Bank of India", category: "amenity", type: "bank" },
+        { osm_type: "node", osm_id: 33, lat: "42.334", lon: "-83.046", name: "Indian Kitchen", category: "amenity", type: "restaurant" }
+      ] : []);
+    }
+    if (url.hostname === "photon.komoot.io" && url.searchParams.get("q") === "india") {
+      return json({ features: [{
+        geometry: { coordinates: [-83.046, 42.335] },
+        properties: { osm_type: "N", osm_id: 34, name: "FirstRand Bank, India branch", osm_key: "amenity", osm_value: "bank" }
+      }] });
+    }
+    return json({ features: [] });
+  });
+  await page.goto("/#eat");
+  await page.locator("#place").fill("Detroit");
+  await page.locator("#eatgo").click();
+
+  const places = page.locator("#eatlist");
+  await expect(places).toContainText("Indian Kitchen", { timeout: 15000 });
+  await expect(page.locator("#eatstatus")).toContainText("Photon ✓", { timeout: 15000 });
+  await expect(places).not.toContainText("State Bank of India");
+  await expect(places).not.toContainText("FirstRand Bank, India branch");
+});
+
+test("Restaurant search includes food-tagged bakeries but rejects bakery-name matches", async ({ page }) => {
+  let overpassQuery = "";
+  await page.route("**/*", route => {
+    const url = new URL(route.request().url());
+    if (url.origin === appOrigin) return route.continue();
+    const json = body => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
+    if (url.hostname === "overpass-api.de") {
+      overpassQuery = new URLSearchParams(route.request().postData() || "").get("data") || "";
+      return json({ elements: [
+        { type: "node", id: 51, lat: 42.333, lon: -83.046, tags: { name: "Green Oven", shop: "bakery", "diet:vegetarian": "yes" } }
+      ] });
+    }
+    if (url.hostname === "nominatim.openstreetmap.org" && url.searchParams.get("q")) {
+      return json([{ lat: "42.3314", lon: "-83.0458", display_name: "Detroit, Michigan" }]);
+    }
+    if (url.hostname === "nominatim.openstreetmap.org" && url.searchParams.get("shop") === "bakery") {
+      return json([
+        { osm_type: "node", osm_id: 51, lat: "42.333", lon: "-83.046", name: "Green Oven", category: "shop", type: "bakery", extratags: { "diet:vegetarian": "yes" } },
+        { osm_type: "node", osm_id: 52, lat: "42.334", lon: "-83.046", name: "Vegan Bakehouse", category: "shop", type: "bakery" },
+        { osm_type: "node", osm_id: 53, lat: "42.335", lon: "-83.046", name: "Vegan Bakery Bank", category: "amenity", type: "bank" }
+      ]);
+    }
+    if (url.hostname === "photon.komoot.io" && url.searchParams.get("osm_tag") === "shop" && url.searchParams.get("q") === "vegan") {
+      return json({ features: [{
+        geometry: { coordinates: [-83.046, 42.334] },
+        properties: { osm_type: "N", osm_id: 52, name: "Vegan Bakehouse", osm_key: "shop", osm_value: "bakery" }
+      }] });
+    }
+    if (url.hostname.includes("overpass")) return route.abort();
+    return json(url.hostname === "photon.komoot.io" ? { features: [] } : []);
+  });
+  await page.goto("/#eat");
+  await page.locator("#place").fill("Detroit");
+  await page.locator("#eatgo").click();
+
+  const places = page.locator("#eatlist");
+  await expect(places).toContainText("Green Oven", { timeout: 15000 });
+  await expect(places).toContainText("Vegan Bakehouse");
+  await expect(page.locator("#eatstatus")).toContainText("Photon ✓", { timeout: 15000 });
+  await expect(places).not.toContainText("Vegan Bakery Bank");
+  expect(overpassQuery).toContain('["shop"="bakery"]["diet:vegetarian"~"^(yes|only)$"]');
+});
+
+test("Restaurant search includes tagged airport, stadium, and station eateries within radius", async ({ page }) => {
+  await page.route("**/*", route => {
+    const url = new URL(route.request().url());
+    if (url.origin === appOrigin) return route.continue();
+    const json = body => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
+    if (url.hostname === "overpass-api.de") {
+      return json({ elements: [
+        { type: "node", id: 41, lat: 42.333, lon: -83.046, tags: { name: "Airport Terminal Cafe", amenity: "cafe", "diet:vegetarian": "yes", indoor: "yes", level: "1" } },
+        { type: "node", id: 42, lat: 42.334, lon: -83.046, tags: { name: "Stadium Fast Food Counter", amenity: "fast_food", "diet:vegan": "yes", indoor: "yes" } },
+        { type: "node", id: 43, lat: 42.335, lon: -83.046, tags: { name: "Station Food Court", amenity: "food_court", "diet:vegetarian": "yes", indoor: "yes" } },
+        { type: "node", id: 44, lat: 42.336, lon: -83.046, tags: { name: "Station Canteen", amenity: "canteen", "diet:vegetarian": "yes", indoor: "yes" } },
+        { type: "node", id: 45, lat: 42.36, lon: -83.046, tags: { name: "Faraway Airport Cafe", amenity: "cafe", "diet:vegetarian": "yes" } },
+        { type: "node", id: 46, lat: 42.333, lon: -83.046, tags: { name: "India Airport Terminal", aeroway: "terminal" } },
+        { type: "node", id: 47, lat: 42.333, lon: -83.046, tags: { name: "State Bank of India", amenity: "bank" } }
+      ] });
+    }
+    if (url.hostname === "nominatim.openstreetmap.org" && url.searchParams.get("q")) {
+      return json([{ lat: "42.3314", lon: "-83.0458", display_name: "Detroit, Michigan" }]);
+    }
+    if (url.hostname.includes("overpass")) return route.abort();
+    return json(url.hostname === "photon.komoot.io" ? { features: [] } : []);
+  });
+  await page.goto("/#eat");
+  await page.locator("#place").fill("Detroit");
+  await page.locator("#eatgo").click();
+
+  const places = page.locator("#eatlist");
+  await expect(places).toContainText("Airport Terminal Cafe", { timeout: 15000 });
+  await expect(places).toContainText("Stadium Fast Food Counter");
+  await expect(places).toContainText("Station Food Court");
+  await expect(places).toContainText("Station Canteen");
+  await expect(places).not.toContainText("Faraway Airport Cafe");
+  await expect(places).not.toContainText("India Airport Terminal");
+  await expect(places).not.toContainText("State Bank of India");
+});
+
 test("Place search works worldwide: village suggestions and a city picker for states", async ({ page }) => {
   await page.route("**/*", route => {
     const url = new URL(route.request().url());

@@ -3200,9 +3200,22 @@ function setEatStatus(html){ $("#eatstatus").innerHTML = html || ""; }
 const VEG_NAME_RX = /\b(vegan|vegetarian|veggie|veg|pure veg|plant[- ]based|udupi|bhavan|bhawan|sattvic|saatvik|satvik|jain|bhojanalaya|thali|annapoorna|annapurna|shakahari|govinda'?s|loving hut|falafel)\b/i;
 const VEG_FRIENDLY_NAME = /\b(masala|curry|tandoor|tandoori|biryani|dosa|idli|chaat|thali|india|indian|punjab|punjabi|bombay|mumbai|delhi|madras|chennai|kerala|gujarat|nepal|himalaya|falafel|hummus|ethiopian|habesha|lebanese|mediterranean|salad|juice|smoothie|acai|poke bowl)\b/i;
 const VEG_FRIENDLY_CUISINE = /(^|;)\s*(indian|south_indian|north_indian|gujarati|punjabi|nepalese|sri_lankan|ethiopian|eritrean|lebanese|middle_eastern|falafel|mediterranean|israeli|vegetarian|vegan)\s*(;|$)/i;
+const FOOD_VENUE_TYPES = new Set(["restaurant", "cafe", "fast_food", "food_court", "ice_cream", "canteen"]);
+const FOOD_SHOP_TYPES = new Set(["bakery"]);
+function setVenueTag(t, key, value){
+  const tag = key || "amenity";
+  t[tag] = value;
+  if(tag === "amenity" || FOOD_VENUE_TYPES.has(String(value || "").toLowerCase())) t.amenity = value;
+}
+function isFoodVenue(t){
+  return FOOD_VENUE_TYPES.has(String(t.amenity || "").toLowerCase()) || FOOD_SHOP_TYPES.has(String(t.shop || "").toLowerCase());
+}
 function classifyFallbackPlace(t){
-  if((t.amenity === "place_of_worship" || t.building === "gurdwara") && ((t.religion || "") === "sikh" || /gurdwara|gurudwara|gurdwara sahib|iskcon|hare krishna|govinda/i.test(t.name || ""))) return "langar";
+  if(t.amenity === "place_of_worship" || t.building === "gurdwara"){
+    return ((t.religion || "") === "sikh" || /gurdwara|gurudwara|gurdwara sahib|iskcon|hare krishna|govinda/i.test(t.name || "")) ? "langar" : null;
+  }
   const c = classifyPlace(t); if(c) return c;
+  if(!isFoodVenue(t)) return null;
   if(VEG_NAME_RX.test(t.name || "")) return "veg_name";
   if(VEG_FRIENDLY_CUISINE.test(t.cuisine || "")) return "veg_friendly";
   if(!t.cuisine && VEG_FRIENDLY_NAME.test(t.name || "")) return "veg_friendly";
@@ -3215,7 +3228,7 @@ function boxFor(center, R){
 }
 function fromNominatim(x){
   const t = Object.assign({}, x.extratags || {}, {name: x.name || (x.namedetails && x.namedetails.name) || ""});
-  t[x.category || "amenity"] = x.type;
+  setVenueTag(t, x.category || "amenity", x.type);
   const a = x.address || {};
   if(a.road && !t["addr:street"]) t["addr:street"] = a.road;
   if(a.house_number && !t["addr:housenumber"]) t["addr:housenumber"] = a.house_number;
@@ -3225,7 +3238,7 @@ function fromNominatim(x){
 function fromPhoton(f){
   const p = f.properties || {}, c = (f.geometry || {}).coordinates || [];
   const type = {N:"node", W:"way", R:"relation"}[p.osm_type] || "node";
-  const t = {name: p.name || ""}; t[p.osm_key || "amenity"] = p.osm_value;
+  const t = {name: p.name || ""}; setVenueTag(t, p.osm_key || "amenity", p.osm_value);
   if(p.street) t["addr:street"] = p.street; if(p.housenumber) t["addr:housenumber"] = p.housenumber; if(p.city) t["addr:city"] = p.city;
   return {type, id: p.osm_id, lat: c[1], lon: c[0], tags: t, src: "Photon"};
 }
@@ -3234,12 +3247,13 @@ async function nominatimPOIs(center, R, kinds, seq, onBatch){
   const b = boxFor(center, R), vb = [b.minLon, b.maxLat, b.maxLon, b.minLat].join(",");
   for(const item of kinds){
     const [kind, pages] = Array.isArray(item) ? item : [item, 1];
+    const [tag, value] = String(kind).includes("=") ? String(kind).split("=", 2) : ["amenity", kind];
     const seen = [];
     for(let pg = 0; pg < pages; pg++){
       if(seq !== EAT.seq) return;
       let got = 0;
       try{
-        const j = await getJSON("https://nominatim.openstreetmap.org/search?format=jsonv2&bounded=1&extratags=1&addressdetails=1&limit=40&viewbox=" + vb + "&amenity=" + encodeURIComponent(kind) +
+        const j = await getJSON("https://nominatim.openstreetmap.org/search?format=jsonv2&bounded=1&extratags=1&addressdetails=1&limit=40&viewbox=" + vb + "&" + encodeURIComponent(tag) + "=" + encodeURIComponent(value) +
           (seen.length ? "&exclude_place_ids=" + seen.slice(-400).join(",") : ""), null, {timeout:10000});
         if(seq === EAT.seq && Array.isArray(j)){ got = j.length; j.forEach(x => x.place_id && seen.push(x.place_id)); onBatch(j.map(fromNominatim)); }
       }catch(_){}
@@ -3287,7 +3301,7 @@ async function eatSearch(center, label, alts){
       const t = el.tags || {}; if(!t.name || el.lat == null || isNaN(el.lat)) return;
       const cat = shop ? classifyStore(t) : classifyFallbackPlace(t); if(!cat) return;
       if(shop && cat === "s_super" && (t.shop || "") === "convenience" && !/(yes|only)/.test(t["diet:vegan"] || t["diet:vegetarian"] || "")) return;
-      const dist = haversine(center, {lat: el.lat, lon: el.lon}); if(dist > R * 1.5) return;
+      const dist = haversine(center, {lat: el.lat, lon: el.lon}); if(dist > R) return;
       const id = el.type + el.id;
       const nn = norm(t.name).replace(/[^a-z0-9]/g, "");
       const twin = EAT.places.find(q => q.id !== id && norm(q.t.name).replace(/[^a-z0-9]/g, "") === nn && haversine(q, {lat: el.lat, lon: el.lon}) < 150);
@@ -3302,7 +3316,8 @@ async function eatSearch(center, label, alts){
   status();
 
   /* 1. detailed Overpass query (best data, but often overloaded) — raced across servers */
-  const A = "[\"amenity\"~\"^(restaurant|cafe|fast_food|food_court|ice_cream)$\"]";
+  const A = "[\"amenity\"~\"^(restaurant|cafe|fast_food|food_court|ice_cream|canteen)$\"]";
+  const B = "[\"shop\"=\"bakery\"]";
   const around = "(around:" + R + "," + center.lat + "," + center.lon + ")";
   const S = "[\"shop\"~\"^(supermarket|greengrocer|health_food|organic|farm|spices|deli|wholesale|grocery|convenience|herbalist)$\"]";
   const q = shop
@@ -3311,6 +3326,9 @@ async function eatSearch(center, label, alts){
     "nwr" + around + A + "[\"diet:vegan\"~\"^(yes|only)$\"];" +
     "nwr" + around + A + "[\"diet:vegetarian\"~\"^(yes|only)$\"];" +
     "nwr" + around + A + "[\"cuisine\"~\"vegan|vegetarian|indian|ethiopian|lebanese|falafel|middle_eastern\"];" +
+    "nwr" + around + B + "[\"diet:vegan\"~\"^(yes|only)$\"];" +
+    "nwr" + around + B + "[\"diet:vegetarian\"~\"^(yes|only)$\"];" +
+    "nwr" + around + B + "[\"cuisine\"~\"vegan|vegetarian|indian|ethiopian|lebanese|falafel|middle_eastern\"];" +
     "nwr" + around + "[\"amenity\"=\"place_of_worship\"][\"religion\"=\"sikh\"];" +
     ");out center tags 300;";
   const op = overpass(q).then(j => {
@@ -3323,8 +3341,9 @@ async function eatSearch(center, label, alts){
     nominatimPOIs(center, R, [["supermarket", 3], "greengrocer", "health food", "organic", "marketplace", ["grocery", 2]], seq, add),
     photonPOIs(center, R, ["indian", "organic", "health", "bazaar", "market", "asian"], "shop", seq, add)
   ] : [
-    nominatimPOIs(center, R, [["restaurant", 5], ["cafe", 2], ["fast food", 2], ["food court", 1]], seq, add),
-    photonPOIs(center, R, ["vegan", "vegetarian", "veg", "veggie", "plant based", "falafel", "india", "indian", "masala", "curry", "dosa", "udupi", "bhavan", "gurdwara", "gurudwara", "iskcon", "govinda", "salad", "juice"], "amenity", seq, add)
+    nominatimPOIs(center, R, [["restaurant", 5], ["cafe", 2], ["fast food", 2], ["food court", 1], "canteen", "shop=bakery"], seq, add),
+    photonPOIs(center, R, ["vegan", "vegetarian", "veg", "veggie", "plant based", "falafel", "india", "indian", "masala", "curry", "dosa", "udupi", "bhavan", "gurdwara", "gurudwara", "iskcon", "govinda", "salad", "juice"], "amenity", seq, add),
+    photonPOIs(center, R, ["vegan", "vegetarian", "veg", "veggie", "plant based"], "shop", seq, add)
   ]).then(() => { src.fast = "done"; });
 
   if(shop && EAT.productCode) nearbySightings(EAT.productCode, seq);   /* independent of the store searches */
