@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ingredient Ledger — is it vegan, vegetarian or non-veg?</title>
 <meta name="description" content="Instantly check whether any food, drink, medicine, vaccine or ingredient is vegan, lacto-vegetarian or non-vegetarian — with how each ingredient is derived. Plus a worldwide search for vegetarian and vegan restaurants.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ingredient Ledger">
+<meta property="og:title" content="Ingredient Ledger: is it vegan, vegetarian or non-veg?">
+<meta property="og:description" content="Check any food, drink, medicine or vaccine: the diet verdict first, then gluten and allergens, with how every ingredient is made.">
+<meta property="og:url" content="https://ranjpun.github.io/ingredient-ledger/">
+<meta property="og:image" content="https://ranjpun.github.io/ingredient-ledger/icons/icon-512.png">
+<meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#f6f3ec" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#14130f" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="manifest.webmanifest">
@@ -12,13 +19,14 @@
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#f6f3ec; --surface:#fffdf8; --surface-2:#f1ece1;
-  --ink:#1e1b16; --dim:#5f584c; --faint:#8b8376;
+  --ink:#1b1813; --dim:#4a4338; --faint:#544d42;
   --line:rgba(30,27,22,.14); --line-soft:rgba(30,27,22,.07);
-  --clay:#a8451d; --clay-soft:#f6e7de;
+  --clay:#8c3412; --clay-soft:#f9e4d9;
+  --bg-base:#fdf6ea; --bg-art:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 1000' preserveAspectRatio='none'%3E %3Cdefs%3E %3ClinearGradient id='base' x1='0' x2='1' y1='0' y2='0'%3E%3Cstop offset='0' stop-color='%23d6f3e2'/%3E%3Cstop offset='.28' stop-color='%23c7ebee'/%3E%3Cstop offset='.56' stop-color='%23fdf6ea'/%3E%3Cstop offset='.8' stop-color='%23fde0d4'/%3E%3Cstop offset='1' stop-color='%23fbd2c4'/%3E%3C/linearGradient%3E %3ClinearGradient id='w1' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%23a9e3c4'/%3E%3Cstop offset='.3' stop-color='%239fd8e0'/%3E%3Cstop offset='.55' stop-color='%23f8efe2'/%3E%3Cstop offset='.8' stop-color='%23f7cbbc'/%3E%3Cstop offset='1' stop-color='%23f6bcaa'/%3E%3C/linearGradient%3E %3ClinearGradient id='w2' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%23bdebd2'/%3E%3Cstop offset='.32' stop-color='%23b2e1ea'/%3E%3Cstop offset='.58' stop-color='%23fffaf2'/%3E%3Cstop offset='.82' stop-color='%23f9cfbf'/%3E%3Cstop offset='1' stop-color='%23f7b9a6'/%3E%3C/linearGradient%3E %3ClinearGradient id='w3' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%2398dcb9'/%3E%3Cstop offset='.3' stop-color='%238fd0dc'/%3E%3Cstop offset='.56' stop-color='%23f5ebde'/%3E%3Cstop offset='.8' stop-color='%23f5c1b0'/%3E%3Cstop offset='1' stop-color='%23f4b4a1'/%3E%3C/linearGradient%3E %3Cfilter id='soft' x='-5%25' y='-20%25' width='110%25' height='140%25'%3E%3CfeGaussianBlur stdDeviation='14'/%3E%3C/filter%3E %3Cfilter id='silk' x='-5%25' y='-20%25' width='110%25' height='140%25'%3E%3CfeGaussianBlur stdDeviation='3'/%3E%3C/filter%3E %3C/defs%3E %3Crect width='1600' height='1000' fill='url(%23base)'/%3E %3Cg filter='url(%23soft)'%3E %3Cpath d='M0 420 C220 330 430 470 700 400 S1180 300 1600 380 L1600 1000 L0 1000Z' fill='url(%23w2)' opacity='.75'/%3E %3Cpath d='M0 560 C260 470 520 640 820 560 S1300 460 1600 540 L1600 1000 L0 1000Z' fill='url(%23w1)' opacity='.6'/%3E %3Cpath d='M0 720 C300 640 560 790 900 720 S1360 640 1600 700 L1600 1000 L0 1000Z' fill='url(%23w3)' opacity='.5'/%3E %3Cpath d='M0 860 C340 800 640 900 960 850 S1400 790 1600 830 L1600 1000 L0 1000Z' fill='url(%23w2)' opacity='.7'/%3E %3C/g%3E %3Cg filter='url(%23silk)' fill='none' stroke='%23ffffff' stroke-linecap='round'%3E %3Cpath d='M0 430 C220 340 430 480 700 410 S1180 310 1600 390' stroke-width='3' opacity='.55'/%3E %3Cpath d='M0 570 C260 480 520 650 820 570 S1300 470 1600 550' stroke-width='2' opacity='.45'/%3E %3Cpath d='M0 730 C300 650 560 800 900 730 S1360 650 1600 710' stroke-width='2.5' opacity='.4'/%3E %3C/g%3E %3C/svg%3E"); --band:rgba(253,249,242,.78); --band-solid:rgba(253,249,242,.96);
   /* the five verdicts */
   --vegan:#2f7d32;   --vegan-soft:#e4f2e1;
   --veg:#0f766e;     --veg-soft:#ddf3ef;
@@ -30,7 +38,7 @@
   --text2:#3b352d; --text3:#4a443b; --on-ink:#fbf8f1; --hl:#fbe7b8; --topbg:rgba(246,243,236,.9);
   color-scheme:light;
   --shadow:0 1px 2px rgba(30,27,22,.04),0 10px 28px -18px rgba(30,27,22,.22);
-  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
   --sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
   --max:1120px;
@@ -43,7 +51,7 @@
     --egg:#f0a066; --egg-soft:#3a2615; --nonveg:#f07a98; --nonveg-soft:#3b1a24; --check:#e5b85a; --check-soft:#362a12;
     --slate:#b7c0cc; --slate-soft:#2a2d33;
     --text2:#ddd5c7; --text3:#cfc6b6; --on-ink:#14130f; --hl:#5a4718; --topbg:rgba(20,19,15,.9);
-    --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 30px -18px rgba(0,0,0,.7); color-scheme:dark;}}
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 30px -18px rgba(0,0,0,.7); color-scheme:dark; --bg-base:#14130f; --bg-art:none; --band:#14130f; --band-solid:#14130f;}}
 :root[data-theme="dark"]{--paper:#14130f; --surface:#1d1b17; --surface-2:#26231e;
     --ink:#f1ece2; --dim:#b8af9f; --faint:#8a8274;
     --line:rgba(241,236,226,.16); --line-soft:rgba(241,236,226,.08);
@@ -52,11 +60,11 @@
     --egg:#f0a066; --egg-soft:#3a2615; --nonveg:#f07a98; --nonveg-soft:#3b1a24; --check:#e5b85a; --check-soft:#362a12;
     --slate:#b7c0cc; --slate-soft:#2a2d33;
     --text2:#ddd5c7; --text3:#cfc6b6; --on-ink:#14130f; --hl:#5a4718; --topbg:rgba(20,19,15,.9);
-    --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 30px -18px rgba(0,0,0,.7); color-scheme:dark;}
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 30px -18px rgba(0,0,0,.7); color-scheme:dark; --bg-base:#14130f; --bg-art:none; --band:#14130f; --band-solid:#14130f;}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:150px}
 body{
-  margin:0;background:var(--paper);color:var(--ink);
+  margin:0;background:transparent;color:var(--ink);
   font-family:var(--sans);font-size:16px;line-height:1.6;letter-spacing:.005em;
   background-image:
     radial-gradient(900px 420px at 10% -8%, rgba(168,69,29,.06), transparent 60%),
@@ -456,7 +464,382 @@ footer p{margin:0 0 6px;font-size:12.5px;color:var(--faint);line-height:1.6;max-
   html{scroll-padding-top:120px}
 }
 @media (prefers-reduced-motion:reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important}}
-@media print{.top,.tabs,.filters,.searchwrap,.tryrow,.srcrow{display:none !important}.card,.place{break-inside:avoid;box-shadow:none}}
+
+/* ===== v3: profile, gluten & allergens, health score, medicines ===== */
+.kick2{color:var(--faint);margin-left:6px}
+.profbtn{appearance:none;display:flex;align-items:center;gap:9px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 14px 5px 6px;cursor:pointer;box-shadow:var(--shadow);transition:border-color .15s,transform .15s;max-width:300px}
+.profbtn:hover{border-color:var(--clay)}
+.profbtn>svg{width:28px;height:28px;padding:6px;border-radius:50%;background:var(--clay-soft);color:var(--clay);flex:none}
+.profbtn__t{display:flex;flex-direction:column;line-height:1.15;text-align:left;min-width:0}
+.profbtn__t small{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.profbtn__t b{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+dialog.profdlg{border:0;padding:0;border-radius:20px;width:min(560px,calc(100% - 24px));max-height:calc(100dvh - 32px);background:var(--surface);color:var(--ink);box-shadow:0 40px 100px -30px rgba(20,16,10,.55)}
+dialog.profdlg::backdrop{background:rgba(20,16,10,.38);backdrop-filter:blur(3px)}
+.profdlg__in{display:grid;gap:4px;padding:22px 24px 18px}
+.profdlg__hd{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px}
+.profdlg__hd h2{font-family:var(--serif);font-weight:400;font-size:32px;line-height:1.05;margin:2px 0 0}
+.pstep{border-top:1px solid var(--line-soft);padding:16px 0 14px;display:grid;gap:12px}
+.pstep h3{margin:0;font-size:14px;font-weight:600;display:flex;align-items:center;gap:9px}
+.pstep h3 span{width:22px;height:22px;border-radius:50%;background:var(--ink);color:var(--on-ink);display:grid;place-items:center;font-family:var(--mono);font-size:11px;font-weight:500}
+.pstep .note-sm{margin:-4px 0 0}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.seg label{position:relative;cursor:pointer}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:flex;flex-direction:column;gap:2px;height:100%;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--paper);transition:all .15s}
+.seg b{font-size:13.5px;font-weight:600}
+.seg small{font-size:11.5px;color:var(--dim)}
+.seg input:checked+span{border-color:var(--clay);background:var(--clay-soft);box-shadow:0 0 0 3px color-mix(in srgb,var(--clay) 14%,transparent)}
+.seg input:focus-visible+span{outline:2px solid var(--clay);outline-offset:2px}
+.toggle{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;cursor:pointer}
+.toggle input{position:absolute;opacity:0;pointer-events:none}
+.toggle .sw{width:38px;height:22px;border-radius:99px;background:var(--surface-2);border:1px solid var(--line);position:relative;margin-top:1px;transition:background .15s}
+.toggle .sw::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .18s}
+.toggle input:checked+.sw{background:var(--clay);border-color:var(--clay)}
+.toggle input:checked+.sw::after{transform:translateX(16px)}
+.toggle input:focus-visible+.sw{outline:2px solid var(--clay);outline-offset:2px}
+.toggle b{display:block;font-size:14px;font-weight:600}
+.toggle small{display:block;font-size:12.5px;color:var(--dim);line-height:1.45}
+.algpick{display:flex;flex-wrap:wrap;gap:7px}
+.apick{cursor:pointer}
+.apick input{position:absolute;opacity:0;pointer-events:none}
+.apick span{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:5px 12px;font-size:13px;color:var(--dim);background:var(--paper);transition:all .14s}
+.apick input:checked+span{background:var(--nonveg-soft);border-color:var(--nonveg);color:var(--nonveg);font-weight:600}
+.apick input:checked+span::before{content:"✓ "}
+.apick input:focus-visible+span{outline:2px solid var(--clay);outline-offset:2px}
+.profdlg__ft{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid var(--line-soft);padding-top:14px;flex-wrap:wrap}
+/* gluten + allergen chips */
+.algrow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:10px}
+.alab{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:0 2px 0 6px}
+.algrow .alab:first-child,.arow .alab{margin-left:0}
+.achip{font-size:12px;line-height:1;padding:5px 9px;border-radius:99px;border:1px solid var(--line);background:var(--paper);color:var(--text3)}
+.achip.c{border-color:color-mix(in srgb,var(--check) 45%,transparent);background:var(--check-soft);color:var(--check);font-weight:500}
+.achip.m{border-style:dashed}
+.achip.mine{background:var(--nonveg);border-color:var(--nonveg);color:var(--on-ink);font-weight:600}
+.achip.m.mine{background:var(--nonveg-soft);color:var(--nonveg)}
+.gfbadge{font-size:12px;line-height:1;padding:5px 10px;border-radius:99px;font-weight:600;display:inline-flex;align-items:center;gap:6px;border:1px solid transparent}
+.gfbadge::before{content:"";width:12px;height:12px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M12 22V8M12 8c0-3 2-5 4-6-0 3-1 5-4 6zM12 8C12 5 10 3 8 2c0 3 1 5 4 6zM12 13c0-3 2-5 5-5 0 3-2 5-5 5zM12 13c0-3-2-5-5-5 0 3 2 5 5 5zM12 18c0-3 2-5 5-5 0 3-2 5-5 5zM12 18c0-3-2-5-5-5 0 3 2 5 5 5z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M12 22V8M12 8c0-3 2-5 4-6-0 3-1 5-4 6zM12 8C12 5 10 3 8 2c0 3 1 5 4 6zM12 13c0-3 2-5 5-5 0 3-2 5-5 5zM12 13c0-3-2-5-5-5 0 3 2 5 5 5zM12 18c0-3 2-5 5-5 0 3-2 5-5 5zM12 18c0-3-2-5-5-5 0 3 2 5 5 5z'/%3E%3C/svg%3E") center/contain no-repeat}
+.gf-yes{background:var(--vegan-soft);color:var(--vegan)}
+.gf-no{background:var(--nonveg-soft);color:var(--nonveg)}
+.gf-maybe,.gf-check{background:var(--check-soft);color:var(--check)}
+.gf-open{background:var(--surface-2);color:var(--dim)}
+.aalert{border-radius:10px;padding:9px 12px;font-size:13.5px;margin:10px 0 0;border:1px solid}
+.aalert.bad{background:var(--nonveg-soft);border-color:color-mix(in srgb,var(--nonveg) 35%,transparent);color:var(--nonveg)}
+.aalert.warn{background:var(--check-soft);border-color:color-mix(in srgb,var(--check) 35%,transparent);color:var(--check)}
+.aalert.sm{font-size:12.5px;padding:6px 10px;margin-top:8px}
+.allergens{display:grid;gap:8px;margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--paper);border:1px solid var(--line-soft)}
+.allergens .aalert{margin:0}
+.arow{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.arow .alab{min-width:88px}
+/* health score */
+.healthwrap{margin-top:12px;border:1px solid var(--line-soft);border-radius:12px;background:var(--surface)}
+.healthwrap>summary{list-style:none;display:flex;gap:12px;align-items:center;padding:10px 14px;cursor:pointer}
+.healthwrap>summary::-webkit-details-marker{display:none}
+.healthwrap>summary>span:last-child{display:flex;flex-direction:column;line-height:1.3}
+.healthwrap>summary b{font-size:14px}
+.healthwrap>summary small{font-size:12px;color:var(--dim)}
+.healthwrap>summary::after{content:"";margin-left:auto;width:9px;height:9px;border-right:1.6px solid var(--faint);border-bottom:1.6px solid var(--faint);transform:rotate(45deg);transition:transform .2s}
+.healthwrap[open]>summary::after{transform:rotate(-135deg)}
+.health{padding:4px 14px 14px;display:grid;gap:14px}
+.health__top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.ring{--c:var(--faint);width:66px;height:66px;border-radius:50%;display:grid;place-items:center;align-content:center;background:radial-gradient(closest-side,var(--surface) 78%,transparent 80% 100%),conic-gradient(var(--c) calc(var(--p)*1%),var(--surface-2) 0)}
+.ring b{font-family:var(--serif);font-size:24px;font-weight:400;line-height:1}
+.ring small{font-size:9px;color:var(--faint);line-height:1}
+.ringlab{display:flex;flex-direction:column;line-height:1.25}
+.ringlab b{font-size:16px}
+.ringlab span{font-size:12px;color:var(--dim);max-width:46ch}
+.s-exc{--c:#1f8a3b}.s-good{--c:#6aa636}.s-fair{--c:#c9a400}.s-poor{--c:#e08a1e}.s-bad{--c:#d2422d}.s-none{--c:var(--faint)}
+.parts{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.parts li{display:grid;grid-template-columns:130px 1fr 34px;gap:4px 10px;align-items:center;font-size:12.5px}
+.parts .pn{font-weight:600} .parts .pn small{font-weight:400;color:var(--faint);font-family:var(--mono);font-size:10.5px}
+.pbar{height:7px;border-radius:99px;background:var(--surface-2);overflow:hidden} .pbar i{display:block;height:100%;background:var(--clay);border-radius:99px}
+.parts b{text-align:right} .parts em{grid-column:2/-1;font-style:normal;font-size:11.5px;color:var(--faint);margin-top:-3px}
+.howscore ul{margin:6px 0 0;padding-left:18px;font-size:12.5px;color:var(--dim);line-height:1.55} .howscore li{margin-bottom:4px}
+.health__tags{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.pill{font-size:11.5px;padding:4px 9px;border-radius:99px;background:var(--surface-2);color:var(--text3)}
+.pill.ok{background:var(--vegan-soft);color:var(--vegan)} .pill.bad{background:var(--nonveg-soft);color:var(--nonveg)}
+.nscore{font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:99px;color:#fff;letter-spacing:.02em}
+.ns-a{background:#038141}.ns-b{background:#85bb2f}.ns-c{background:#e9b400;color:#2b2000}.ns-d{background:#ee8100}.ns-e{background:#e63e11}
+.nutlist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:6px}
+.nut{display:grid;grid-template-columns:1fr auto;gap:0 8px;padding:7px 10px;border-radius:9px;background:var(--paper);border:1px solid var(--line-soft);font-size:12.5px}
+.nut span{color:var(--dim)} .nut b{font-weight:600} .nut em{grid-column:1/-1;font-style:normal;font-size:11px;color:var(--faint)}
+.nut.high em{color:var(--nonveg);font-weight:600} .nut.moderate em{color:var(--check)} .nut.low em,.nut.good em{color:var(--vegan)}
+.health__adds h5,.sidefx h5,.excip h5{margin:0 0 8px;font-size:13px;font-weight:600;display:flex;gap:8px;align-items:baseline}
+.health__adds h5 span,.excip h5 span{font-family:var(--mono);font-size:11px;color:var(--faint);font-weight:400}
+.sidefx h5 span{font-weight:400;color:var(--dim);font-size:12px}
+.addlist{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.addlist details{border:1px solid var(--line-soft);border-radius:9px;background:var(--paper)}
+.addlist summary{list-style:none;display:flex;align-items:center;gap:8px;padding:7px 10px;cursor:pointer;font-size:13px}
+.addlist summary::-webkit-details-marker{display:none}
+.addlist p{margin:0 10px 8px;font-size:12.5px;color:var(--text3);line-height:1.5}
+.rdot{width:10px;height:10px;border-radius:50%;flex:none;background:var(--c)}
+.rlvl{margin-left:auto;font-size:11px;font-weight:600;color:var(--c);white-space:nowrap}
+.r-high{--c:#d2422d}.r-mod{--c:#e08a1e}.r-lim{--c:#c9a400}.r-none{--c:#4c9a4f}
+.srcs{font-size:11.5px !important;color:var(--faint) !important}
+.srcs a{color:var(--dim)}
+.howscore summary{font-size:12.5px;color:var(--clay);cursor:pointer}
+.howscore p{font-size:12.5px;color:var(--dim);margin:6px 0 0;line-height:1.55}
+.minis{min-width:34px;height:26px;padding:0 7px;border-radius:8px;display:grid;place-items:center;font-weight:700;font-size:13px;color:#fff;background:var(--c);flex:none}
+.s-none.minis{background:var(--surface-2);color:var(--faint)}
+/* medicines */
+.sidefx,.excip{margin-top:12px;padding:12px 14px;border:1px solid var(--line-soft);border-radius:12px;background:var(--paper)}
+.sidefx .boxed{border:2px solid var(--ink);border-radius:8px;padding:8px 11px;margin-bottom:8px}
+.sidefx .boxed b{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase}
+.sidefx .boxed p,.sidefx .common,.sidefx details p{margin:4px 0 0;font-size:13px;line-height:1.55;color:var(--text3)}
+.sidefx details{margin-top:6px} .sidefx summary{font-size:13px;cursor:pointer;color:var(--ink);font-weight:500}
+.sidefx .srcs{margin:10px 0 0}
+.excip ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.excip li{padding-left:12px;border-left:3px solid var(--check)}
+.excip li.mine{border-left-color:var(--nonveg)}
+.excip li b{font-size:13px} .excip li p{margin:2px 0 0;font-size:12.8px;color:var(--text3);line-height:1.5}
+/* alternatives + history */
+.altwrap{margin-top:12px}
+.labellinks{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.labellink{display:inline-flex;align-items:center;gap:9px;padding:6px 12px 6px 6px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);text-decoration:none;font-size:13.5px;font-weight:500;transition:border-color .2s,box-shadow .2s}
+.labellink:hover{border-color:var(--clay);box-shadow:var(--shadow)}
+.labellink img{width:38px;height:38px;object-fit:cover;border-radius:8px;background:var(--surface-2)}
+.labellink:not(:has(img)){padding-left:12px}
+.alts{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;margin-top:10px}
+.altp,.hist{appearance:none;display:flex;align-items:center;gap:10px;text-align:left;border:1px solid var(--line-soft);border-radius:12px;background:var(--surface);color:var(--ink);padding:8px 10px;cursor:pointer;transition:border-color .15s,box-shadow .15s;min-width:0}
+.altp:hover,.hist:hover{border-color:var(--line);box-shadow:var(--shadow)}
+.altp img,.hist img,.altp .ph,.hist .ph{width:42px;height:42px;object-fit:contain;border-radius:8px;background:var(--surface-2);flex:none}
+.altp__t,.hist__t{display:flex;flex-direction:column;min-width:0;flex:1;line-height:1.3}
+.altp__t b,.hist__t b{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.altp__t small,.hist__t small{font-size:11.5px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.histlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
+.hk{font-weight:600}.hk.k-vegan{color:var(--vegan)}.hk.k-veg{color:var(--veg)}.hk.k-lacto{color:var(--lacto)}.hk.k-check{color:var(--check)}.hk.k-egg{color:var(--egg)}.hk.k-nonveg{color:var(--nonveg)}
+.linkbtn{appearance:none;border:0;background:none;color:var(--clay);font:inherit;cursor:pointer;padding:0 0 0 8px;text-transform:none;letter-spacing:0;font-family:var(--sans);font-size:12px}
+/* collapsed live sources */
+.srcwrap{margin-top:14px}
+.srcwrap>summary{list-style:none;display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-size:12.5px;color:var(--dim);padding:4px 0}
+.srcwrap>summary::-webkit-details-marker{display:none}
+.srcwrap>summary::after{content:"";width:7px;height:7px;border-right:1.5px solid var(--faint);border-bottom:1.5px solid var(--faint);transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+.srcwrap[open]>summary::after{transform:rotate(-135deg)}
+.srcwrap .lbl{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase}
+.srccount{font-size:11.5px;padding:2px 8px;border-radius:99px;background:var(--surface-2);color:var(--text3)}
+.srcwrap .srcrow{margin-top:8px}
+@media (max-width:1200px){.profbtn{max-width:190px}.profbtn__t small{display:none}}
+@media (max-width:1100px) and (min-width:641px){.brand b{display:none}}
+@media (max-width:900px) and (min-width:641px){.profbtn{padding:4px;border-radius:50%}.profbtn__t{display:none}.tab{padding:8px 9px}}
+@media (max-width:640px){
+  .profbtn{padding:4px 11px 4px 4px;box-shadow:none;max-width:190px}
+  .profbtn__t small{display:none}
+  .profbtn__t b{font-size:12.5px}
+  .seg{grid-template-columns:1fr}
+  .seg span{flex-direction:row;justify-content:space-between;align-items:baseline}
+  .profdlg__in{padding:18px 16px 14px}
+  .arow .alab{min-width:0;width:100%}
+  .health__tags{margin-left:0}
+  .kick2{display:block;margin:4px 0 0}
+}
+
+/* =====================================================================================
+   DESIGN SYSTEM v4: type, spacing, rhythm and quiet interactions
+   Type pairing: Newsreader (display & editorial numbers; optical sizes) + IBM Plex Sans (UI & reading).
+   JetBrains Mono is kept only for codes: E-numbers, barcodes, data values. No text is set below 12px.
+   Spacing scale (px): 4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 96 · 128
+   ===================================================================================== */
+:root{
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;--s8:64px;--s9:96px;--s10:128px;
+  --fs-display:clamp(2.75rem, 1.85rem + 3.4vw, 4.75rem);   /* 44 → 76 */
+  --fs-h2:clamp(2.125rem, 1.6rem + 1.9vw, 3.25rem);        /* 34 → 52 */
+  --fs-h3:clamp(1.5rem, 1.3rem + .7vw, 1.875rem);          /* 24 → 30 */
+  --fs-h4:1.125rem;     /* 18 */
+  --fs-lede:1.1875rem;  /* 19 */
+  --fs-body:1rem;       /* 16 */
+  --fs-small:.875rem;   /* 14 */
+  --fs-meta:.8125rem;   /* 13 */
+  --fs-label:.75rem;    /* 12 */
+  --radius:14px; --radius-lg:18px;
+  --shadow-lg:0 1px 2px rgba(30,27,22,.05),0 18px 40px -24px rgba(30,27,22,.35);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+body{font-size:var(--fs-body);line-height:1.6;letter-spacing:0;text-rendering:optimizeLegibility;font-kerning:normal}
+h1,h2,h3,.pagehead h2,.rsec h2,.method h2{text-wrap:balance}
+p,li,dd{text-wrap:pretty}
+.tabular,.countline,.minis,.ring b,.facts b,.parts b,.nut b{font-variant-numeric:tabular-nums lining-nums}
+::selection{background:var(--clay-soft);color:var(--ink)}
+a{text-decoration-thickness:1px;text-underline-offset:.2em;text-decoration-color:color-mix(in srgb,currentColor 45%,transparent);transition:text-decoration-color .2s var(--ease)}
+a:hover{text-decoration-color:currentColor}
+:focus-visible{outline:2px solid var(--clay);outline-offset:3px;border-radius:6px}
+
+/* ---------- header */
+.top{transition:box-shadow .25s var(--ease),border-color .25s var(--ease);border-bottom-color:transparent}
+.top.is-scrolled{border-bottom-color:var(--line);box-shadow:0 10px 30px -24px rgba(30,27,22,.5)}
+.top__in{height:68px;gap:var(--s5)}
+.brand b{font-size:23px;letter-spacing:-.015em;font-variation-settings:"opsz" 36}
+@media (min-width:481px){.tab{font-size:14.5px;padding:8px 14px;border-radius:10px}}
+
+/* ---------- unified eyebrow + labels (one style everywhere) */
+.kicker,.pagehead .kicker{font-family:var(--sans);font-size:var(--fs-label);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--clay);margin:0 0 var(--s4);line-height:1.3;max-width:none}
+.kicker::before{width:24px;opacity:.7}
+.kick2{color:var(--faint);font-weight:500}
+.section-label{font-family:var(--sans);font-size:var(--fs-label);font-weight:600;letter-spacing:.08em;color:var(--dim);margin:0 0 var(--s5);gap:var(--s3)}
+.lbl2,.field dt,.tryrow>span,.srcrow .lbl,.srcwrap .lbl,.alab,.cz .in b,.profbtn__t small{font-family:var(--sans);font-size:var(--fs-label);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+.rsec .src{font-family:var(--sans);font-size:var(--fs-label);font-weight:500;letter-spacing:.04em;text-transform:none;color:var(--faint)}
+.rsec .st,.countline{font-family:var(--sans);font-size:var(--fs-meta);letter-spacing:0;text-transform:none}
+.countline .n{font-weight:600}
+.badge{font-family:var(--sans);font-size:var(--fs-label);font-weight:600;letter-spacing:.01em;text-transform:none;padding:4px 10px;border-radius:99px}
+.badge.plain{font-size:var(--fs-label);font-weight:500}
+.term{font-size:11.5px;padding:3px 8px;border-radius:6px}
+.chip small{font-family:var(--sans);font-size:var(--fs-label);font-variant-numeric:tabular-nums}
+.note-sm{font-size:var(--fs-meta)}
+.evidence-note,.verdict-note{font-size:var(--fs-meta);line-height:1.55}
+.guideline{margin:var(--s2) 0 0;font-size:var(--fs-meta);color:var(--faint);flex-basis:100%}
+
+/* ---------- hero */
+.hero{padding:var(--s9) 0 var(--s5)}
+h1{font-size:var(--fs-display);line-height:1.02;letter-spacing:-.025em;font-weight:400;font-variation-settings:"opsz" 72;margin:0 0 var(--s5);max-width:19ch}
+h1 em{font-weight:400}
+.lede{font-size:var(--fs-lede);line-height:1.55;font-weight:400;color:var(--text3);max-width:56ch;margin:0 0 var(--s7)}
+.searchbox{height:64px;border-radius:var(--radius-lg);padding:0 12px 0 20px}
+#q{font-size:18px}
+.scanbtns{margin-top:var(--s4);gap:var(--s2)}
+.bigbtn{border-radius:12px;padding:11px 16px;font-size:14.5px}
+.tryrow{margin-top:var(--s5);gap:var(--s2)}
+.trybtn{font-size:13.5px;padding:6px 13px}
+.srcwrap{margin-top:var(--s4)}
+.legend-label{margin-top:var(--s9)}
+#view-search.is-searching .legend-label{display:none}
+
+/* verdict key: a quiet strip, not five boxes */
+.legend{gap:0;margin:0;border-top:1px solid var(--line-soft);grid-template-columns:repeat(5,1fr)}
+.lg{background:none;border:0;border-radius:0;padding:var(--s5) var(--s5) 0 0;gap:var(--s2);position:relative}
+.lg+.lg{padding-left:var(--s5);border-left:1px solid var(--line-soft)}
+.lg b{font-size:15px;font-weight:600}
+.lg>span{font-size:var(--fs-small);line-height:1.55;color:var(--dim)}
+@media (max-width:980px){.legend{grid-template-columns:repeat(2,1fr)}.lg,.lg+.lg{padding:var(--s4) var(--s4) var(--s4) 0;border-left:0;border-bottom:1px solid var(--line-soft)}}
+@media (max-width:520px){.legend{grid-template-columns:1fr}}
+
+/* ---------- sections and page heads */
+.section{margin-top:var(--s9)}
+.pagehead{padding:var(--s9) 0 var(--s2)}
+.pagehead h2{font-size:var(--fs-h2);line-height:1.06;letter-spacing:-.02em;font-variation-settings:"opsz" 60;margin:0 0 var(--s4);max-width:20ch}
+.pagehead p{font-size:1.0625rem;line-height:1.6;font-weight:400;color:var(--text3);max-width:62ch}
+.pagehead .kicker{color:var(--clay)}
+
+/* ---------- topic tiles: two features, eight regulars, no orphan row */
+.tiles{gap:var(--s3)}
+.tile{border-radius:var(--radius);padding:var(--s5) var(--s5) 20px;gap:var(--s2);transition:border-color .2s var(--ease),box-shadow .2s var(--ease),transform .2s var(--ease)}
+.tile b{font-size:16px;font-weight:600;letter-spacing:-.005em}
+.tile span{font-size:var(--fs-small);line-height:1.55}
+.tile small{font-family:var(--sans);font-size:var(--fs-label);font-weight:600;letter-spacing:.04em;text-transform:none;color:var(--clay);margin-top:auto;padding-top:var(--s2)}
+.tile.feat{grid-column:span 2;padding:var(--s6);background:linear-gradient(160deg,var(--surface),var(--clay-soft) 180%)}
+.tile.feat b{font-family:var(--serif);font-weight:400;font-size:28px;letter-spacing:-.015em;font-variation-settings:"opsz" 40}
+.tile.feat span{font-size:15px;max-width:44ch}
+@media (max-width:900px){.tile.feat{grid-column:span 2}}
+@media (max-width:480px){.tile.feat{grid-column:auto;padding:var(--s5)}.tile.feat b{font-size:24px}}
+@media (hover:hover){
+  .tile:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--clay) 30%,var(--line));box-shadow:var(--shadow-lg)}
+  .bigbtn,.profbtn,.altp,.hist{transition:border-color .2s var(--ease),box-shadow .2s var(--ease),transform .2s var(--ease)}
+  .bigbtn:hover{box-shadow:var(--shadow-lg)}
+  .card:hover,.product:hover{border-color:var(--line);box-shadow:none}
+}
+.btn,.bigbtn,.chip,.trybtn,.tile,.tab{-webkit-tap-highlight-color:transparent}
+.btn:active,.bigbtn:active,.chip:active,.trybtn:active,.tile:active{transform:scale(.98)}
+
+/* ---------- method: case-study rows */
+.method{margin-top:var(--s10);padding-top:var(--s9);border-top:1px solid var(--line-soft)}
+.method__intro{max-width:640px;margin-bottom:var(--s8)}
+.method h2{font-family:var(--serif);font-weight:400;font-size:var(--fs-h2);line-height:1.06;letter-spacing:-.02em;font-variation-settings:"opsz" 60;margin:0 0 var(--s4)}
+.method__intro p:last-child{font-size:var(--fs-lede);line-height:1.55;color:var(--text3);margin:0}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:var(--s9)}
+.step{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s8);align-items:start}
+.step:nth-child(even) .step__txt{order:2}
+.step__n{display:block;font-family:var(--serif);font-size:56px;line-height:1;color:var(--clay);font-variation-settings:"opsz" 72;letter-spacing:-.03em;margin-bottom:var(--s4);opacity:.85}
+.step__txt h3{font-family:var(--serif);font-weight:400;font-size:var(--fs-h3);line-height:1.15;letter-spacing:-.012em;font-variation-settings:"opsz" 36;margin:0 0 var(--s4)}
+.step__txt>p{font-size:var(--fs-body);line-height:1.65;color:var(--text3);margin:0 0 var(--s5);max-width:52ch}
+.facts{list-style:none;margin:0;padding:var(--s5) 0 0;border-top:1px solid var(--line-soft);display:grid;grid-template-columns:1fr 1fr;gap:var(--s5)}
+.facts li{display:flex;flex-direction:column;gap:2px}
+.facts b{font-family:var(--serif);font-weight:400;font-size:36px;line-height:1;letter-spacing:-.02em;color:var(--ink)}
+.facts span{font-size:var(--fs-meta);color:var(--dim);line-height:1.45}
+.step__fig{margin:0}
+.specimen{border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--paper);padding:var(--s4);box-shadow:var(--shadow-lg);max-height:440px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 80%,transparent);mask-image:linear-gradient(#000 80%,transparent);pointer-events:none}
+.specimen .card{box-shadow:none}
+.specimen .allergens{margin-top:var(--s3)}
+.specimen .health{padding:var(--s2)}
+.spec-text{margin:0;font-size:var(--fs-small);line-height:1.6;color:var(--text3);font-style:italic}
+.step__fig figcaption{margin-top:var(--s3);font-size:var(--fs-meta);color:var(--faint)}
+@media (max-width:900px){.step{grid-template-columns:1fr;gap:var(--s6)}.step:nth-child(even) .step__txt{order:0}.steps{gap:var(--s8)}.method{margin-top:var(--s9);padding-top:var(--s8)}}
+/* reveal on scroll: progressive enhancement, only where supported and motion is welcome */
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:view()){
+    .step{animation:rise both linear;animation-timeline:view();animation-range:entry 0% cover 28%}
+    @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+  }
+}
+
+/* ---------- results, cards, panels: more air, calmer edges */
+.results{gap:var(--s8);margin-top:var(--s6)}
+.rsec>header{margin-bottom:var(--s5);padding-bottom:var(--s3);row-gap:var(--s1)}
+.rsec h2{font-size:30px;letter-spacing:-.015em;font-variation-settings:"opsz" 40}
+.list{gap:var(--s4)}
+.card{padding:var(--s6) var(--s6) 28px;gap:var(--s5);border-radius:var(--radius-lg);grid-template-columns:44px 1fr}
+.card h3{font-size:19px;letter-spacing:-.01em}
+.aka{font-size:var(--fs-meta)}
+.card__body{margin-top:var(--s5);gap:var(--s4)}
+.field{grid-template-columns:128px 1fr;gap:var(--s4)}
+.field dt{padding-top:4px}
+.field dd{font-size:15px;line-height:1.65}
+.fit{font-size:var(--fs-small)}
+.product{padding:28px;border-radius:var(--radius-lg);gap:var(--s5)}
+.product h4{font-size:var(--fs-h4)}
+.product .ph{background:var(--surface-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='%238a8274' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 8l-9-5-9 5 9 5 9-5z'/%3E%3Cpath d='M3 8v8l9 5 9-5V8'/%3E%3Cpath d='M12 13v8'/%3E%3C/svg%3E") center/28px no-repeat}
+.panel{padding:var(--s6);border-radius:var(--radius-lg)}
+.callout{border-radius:0 var(--radius) var(--radius) 0;padding:var(--s5) var(--s5)}
+.prose p,.prose li{font-size:var(--fs-body);line-height:1.7}
+.def{padding:var(--s5);border-radius:var(--radius)}
+.cz{border-radius:var(--radius)}
+.cz summary{padding:18px 22px}
+.btn{height:46px;font-size:15px;border-radius:11px;padding:0 20px;letter-spacing:.005em;transition:opacity .15s,transform .1s}
+.btn.sm{height:36px;font-size:13.5px;border-radius:9px}
+.field-in{height:48px;border-radius:11px;font-size:15.5px}
+.chip{font-size:13.5px;padding:7px 14px}
+.filters{padding-bottom:var(--s3)}
+.empty{border-radius:var(--radius-lg);padding:var(--s8) var(--s5)}
+
+/* ---------- footer */
+.foot{border-top:1px solid var(--line);margin-top:var(--s10);padding:var(--s8) 0 var(--s9)}
+.foot__grid{display:grid;grid-template-columns:1.4fr 1fr 1.2fr 1.2fr;gap:var(--s6)}
+.foot__brand b{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.015em;display:block;margin-bottom:var(--s2)}
+.foot p{margin:0 0 var(--s2);font-size:var(--fs-small);line-height:1.6;color:var(--dim);max-width:40ch}
+.foot__meta{font-size:var(--fs-meta) !important;color:var(--faint) !important;font-variant-numeric:tabular-nums}
+.foot h4{margin:0 0 var(--s3);font-size:var(--fs-label);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.foot__col a{display:block;font-size:var(--fs-small);color:var(--text2);text-decoration:none;padding:3px 0}
+.foot__col a:hover{color:var(--clay)}
+@media (max-width:900px){.foot__grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.foot__grid{grid-template-columns:1fr}.foot{padding-bottom:120px}}
+
+/* ---------- small screens: keep the rhythm, scale it down */
+@media (max-width:640px){
+  .hero{padding:var(--s7) 0 var(--s4)}
+  .lede{margin-bottom:var(--s6)}
+  .pagehead{padding:var(--s7) 0 0}
+  .section{margin-top:var(--s8)}
+  .legend-label{margin-top:var(--s8)}
+  .card{padding:var(--s5);grid-template-columns:1fr}
+  .product{padding:var(--s5)}
+  .panel{padding:var(--s5)}
+  .field{grid-template-columns:1fr;gap:2px}
+  .step__n{font-size:44px}
+  .facts b{font-size:30px}
+  .rsec h2{font-size:26px}
+  .specimen{padding:var(--s2);border-radius:var(--radius)}
+}
+@media (min-width:761px){.jump,.filters{top:68px}}
+@media (min-width:481px) and (max-width:900px){.tab{padding:8px 9px;font-size:14px}.top__in{gap:12px}}
+@media (min-width:481px) and (max-width:700px){.tab{padding:8px}.tab span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.tabs{gap:0}.profbtn{padding:4px;border-radius:50%;max-width:none}.profbtn__t{display:none}}
+@media (max-width:760px){.top__in{height:56px}}
+
+/* ===== pastel wave background (light mode); dark mode keeps its solid ink background ===== */
+html{background:var(--bg-base)}
+body{background-image:none !important}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--bg-art) center/cover no-repeat,var(--bg-base)}
+.top{background:var(--band);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2)}
+.filters,.jump{background:var(--band);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+@media (max-width:640px){.kicker{flex-wrap:wrap;row-gap:2px}.kicker .kick2{flex-basis:100%;margin:0 0 0 33px}}
+/* no backdrop-filter on the header below 760px: it would trap the fixed bottom tab bar inside the header */
+@media (max-width:760px){.top{background:var(--band-solid);-webkit-backdrop-filter:none;backdrop-filter:none}}
+@media print{.step{animation:none !important}.top,.tabs,.filters,.searchwrap,.tryrow,.srcrow{display:none !important}.card,.place{break-inside:avoid;box-shadow:none}}
 </style>
 </head>
 <body>
@@ -475,27 +858,43 @@ footer p{margin:0 0 6px;font-size:12.5px;color:var(--faint);line-height:1.6;max-
       <button class="tab" role="tab" data-view="guide" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Z"/><path d="M4 19a2 2 0 0 0 2 2h13"/></svg><span>Guide</span></button>
     </nav>
     <div class="me">
-      <label for="profile">I eat</label>
-      <select id="profile" aria-label="My diet" title="Lacto-vegetarian includes dairy, no egg. Lacto-ovo vegetarian includes dairy and egg.">
-        <option value="lacto">Lacto-vegetarian</option>
-        <option value="ovo">Lacto-ovo vegetarian</option>
-        <option value="vegan">Vegan</option>
-      </select>
-      <label class="check strictbox"><input type="checkbox" id="strict"> Strict</label>
-      <details class="strict-help"><summary aria-label="Strict mode help" title="Strict mode help">?</summary><span>Strict changes only uncertain ingredient sources to Avoid. “May contain” and other shared-line warnings stay separate from recipe ingredients; Strict does not assess cross-contact risk.</span></details>
+      <button class="profbtn" id="profbtn" type="button" aria-haspopup="dialog" aria-controls="profdlg" title="My diet, gluten and allergens"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span class="profbtn__t"><small>My profile</small><b id="profsum">Lacto-vegetarian</b></span></button>
       <button class="themebtn" id="themebtn" type="button" aria-label="Switch light or dark theme" title="Light / dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
     </div>
   </div>
 </header>
+
+<dialog class="profdlg" id="profdlg" aria-labelledby="proftitle">
+  <form method="dialog" class="profdlg__in">
+    <div class="profdlg__hd"><div><p class="kicker">Personalise every verdict</p><h2 id="proftitle">My profile</h2></div><button class="iconbtn" value="close" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <section class="pstep"><h3><span>1</span>What I eat</h3>
+      <div class="seg" role="radiogroup" aria-label="My diet">
+        <label><input type="radio" name="diet" value="lacto"><span><b>Lacto-vegetarian</b><small>Dairy, no egg</small></span></label>
+        <label><input type="radio" name="diet" value="ovo"><span><b>Lacto-ovo</b><small>Dairy and egg</small></span></label>
+        <label><input type="radio" name="diet" value="vegan"><span><b>Vegan</b><small>No animal products</small></span></label>
+      </div>
+      <select id="profile" aria-label="My diet" hidden><option value="lacto">Lacto-vegetarian</option><option value="ovo">Lacto-ovo vegetarian</option><option value="vegan">Vegan</option></select>
+      <label class="toggle"><input type="checkbox" id="strict"><span class="sw" aria-hidden="true"></span><span><b>Strict mode</b><small>Treat ingredients whose source is unclear as “avoid”. Shared-line “may contain” warnings are shown separately.</small></span></label>
+    </section>
+    <section class="pstep"><h3><span>2</span>Gluten</h3>
+      <label class="toggle"><input type="checkbox" id="nogluten"><span class="sw" aria-hidden="true"></span><span><b>I avoid gluten</b><small>Flags wheat, barley, rye, oats, spelt and their derivatives on every result.</small></span></label>
+    </section>
+    <section class="pstep"><h3><span>3</span>My allergens</h3>
+      <p class="note-sm">The 14 allergens that must be declared on EU labels (also covers the US “Big 9”).</p>
+      <div class="algpick" id="algpick"></div>
+    </section>
+    <div class="profdlg__ft"><span class="note-sm">Saved in this browser only. Nothing is sent anywhere.</span><button class="btn clay" value="close">Done</button></div>
+  </form>
+</dialog>
 
 <main>
 <!-- ================================ SEARCH ================================ -->
 <section class="view" id="view-search">
   <div class="wrap">
     <div class="hero">
-      <p class="kicker">Vegan · Vegetarian · Lacto-vegetarian · Non-veg</p>
-      <h1>Vegan, vegetarian, or non-veg? <em>Know in seconds.</em></h1>
-      <p class="lede">Type any ingredient, E-number, food, drink, medicine or vaccine — or paste a barcode. You get an instant verdict and <b>exactly how it is derived</b>, checked against the built-in index and live public databases.</p>
+      <p class="kicker">Diet first <span class="kick2">then gluten, allergens and nutrition</span></p>
+      <h1>Vegan, vegetarian, Lacto-vegetarian, or non-veg? <em>Let’s find out!</em></h1>
+      <p class="lede">Type any ingredient, E-number, food, drink, medicine or vaccine, or scan a barcode. First you get the <b>diet verdict</b> and exactly how it is derived. Then <b>gluten and allergens</b>, and for packaged food, the Ledger health rating.</p>
 
       <div class="searchwrap">
         <div class="searchbox" role="search">
@@ -520,8 +919,8 @@ footer p{margin:0 0 6px;font-size:12.5px;color:var(--faint);line-height:1.6;max-
           <button class="trybtn" data-try="digestive biscuits">digestive biscuits</button>
           <button class="trybtn" data-try="beer">beer</button>
         </div>
+        <details class="srcwrap"><summary><span class="lbl">Live sources</span><span id="srccount" class="srccount"></span></summary>
         <div class="srcrow" role="group" aria-label="Live sources to search">
-          <span class="lbl">Also search live</span>
           <label class="check"><input type="checkbox" id="s-food" checked> Packaged foods &amp; drinks</label>
           <label class="check"><input type="checkbox" id="s-med" checked> Medicines &amp; vaccines</label>
           <label class="check"><input type="checkbox" id="s-care"> Personal care</label>
@@ -531,17 +930,59 @@ footer p{margin:0 0 6px;font-size:12.5px;color:var(--faint);line-height:1.6;max-
           <label class="check"><input type="checkbox" id="s-sp" checked> Spoonacular</label>
           <label class="check"><input type="checkbox" id="s-wiki" checked> Encyclopedia</label>
           <button class="keypill" id="keybtn" type="button"><i></i><span>API keys</span></button>
-        </div>
+        </div></details>
       </div>
 
+      <p class="section-label legend-label">The five verdicts</p>
       <div class="legend" id="legend" aria-label="What the five verdicts mean"></div>
     </div>
 
     <div id="home">
+      <div class="section" id="history" hidden>
+        <p class="section-label">Recently checked <button class="linkbtn" type="button" id="histclear">Clear</button></p>
+        <div class="histlist"></div>
+      </div>
       <div class="section">
-        <p class="section-label">Or start from a topic</p>
+        <p class="section-label">Browse by topic</p>
         <div class="tiles" id="tiles"></div>
       </div>
+
+      <section class="method" aria-labelledby="method-title">
+        <div class="method__intro">
+          <p class="kicker">Method</p>
+          <h2 id="method-title">How every verdict is built</h2>
+          <p>Three questions, always in the same order. Diet first, because that is why you are here. Then what could make you ill. Then, for packaged food, how good it is for you.</p>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <div class="step__txt">
+              <span class="step__n">01</span>
+              <h3>Vegan, vegetarian, lacto-vegetarian or non-veg?</h3>
+              <p>Every ingredient is traced to its source: plant, mineral, microbe, milk, egg, insect or slaughter. Each one says whether an animal was killed. When the source is unclear, the result says so, and Strict mode treats it as avoid.</p>
+              <ul class="facts"><li><b class="n-entries">332</b><span>curated entries, each with its source and process</span></li><li><b class="n-swaps">179</b><span>with a vegetarian or vegan alternative</span></li></ul>
+            </div>
+            <figure class="step__fig"><div class="specimen" id="spec-diet"></div><figcaption>Live output from the built-in index: E120 Carmine.</figcaption></figure>
+          </li>
+          <li class="step">
+            <div class="step__txt">
+              <span class="step__n">02</span>
+              <h3>Gluten and the 14 major allergens</h3>
+              <p>Labels are read the way the law defines them: EU Annex II, which also covers the US top nine. The legal exemptions are respected. Set your allergens once, and every result warns you, including “may contain” traces.</p>
+              <ul class="facts"><li><b class="n-gf">191</b><span>index entries with no gluten source</span></li><li><b>14</b><span>allergens checked on every label</span></li></ul>
+            </div>
+            <figure class="step__fig"><div class="specimen" id="spec-alg"></div><figcaption>Live output for a sample biscuit label.</figcaption></figure>
+          </li>
+          <li class="step">
+            <div class="step__txt">
+              <span class="step__n">03</span>
+              <h3>The Ledger health rating</h3>
+              <p>For packaged food: nutrition 50%, processing 25%, additives 25%. Each part is weighted by the strength of peer-reviewed evidence. Additive warnings come only from regulators and the WHO’s cancer agency, and every claim links to its source.</p>
+              <ul class="facts"><li><b>3</b><span>parts, each shown on its own bar</span></li><li><b>0</b><span>points for the organic label, which has no proven health advantage</span></li></ul>
+            </div>
+            <figure class="step__fig"><div class="specimen" id="spec-rating"></div><figcaption>Worked example with illustrative values.</figcaption></figure>
+          </li>
+        </ol>
+      </section>
     </div>
 
     <div class="results" id="results" aria-live="polite" hidden></div>
@@ -687,6 +1128,7 @@ footer p{margin:0 0 6px;font-size:12.5px;color:var(--faint);line-height:1.6;max-
       <p class="filter-hint" id="filterhint" aria-hidden="true" hidden>Scroll horizontally to see all filters</p>
     </div>
     <div class="countline"><span class="n" id="shown">0</span> of <span id="total">0</span> entries <span id="activetag"></span></div>
+    <p class="guideline">Curated guidance, not certification. Recipes change, so check the current label.</p>
     <div class="growline" id="growline" aria-live="polite"></div>
     <div class="list" id="ilist"></div>
   </div>
@@ -758,8 +1200,8 @@ footer p{margin:0 0 6px;font-size:12.5px;color:var(--faint);line-height:1.6;max-
     <div class="section">
       <p class="section-label">Where the answers come from</p>
       <div class="prose">
-        <p><b>The built-in index</b> is a curated reference of 324 ingredients, additives, cheeses, dishes, drinks, medicines, vaccines and "hidden" label terms. It works offline and drives every verdict on the Scan tab and every live product check.</p>
-        <p><b>Live lookups</b> go straight from your browser to these public services — no account, no server of ours, nothing stored:</p>
+        <p><b>The built-in index</b> is a curated reference of <span class="n-entries">332</span> ingredients, additives, cheeses, dishes, drinks, medicines, vaccines and "hidden" label terms. It works offline and drives every verdict on the Scan tab and every live product check.</p>
+        <p><b>Live lookups</b> go straight from your browser to these public services. There is no account and no server of ours. Your profile and recently checked products are kept only in this browser:</p>
         <ul class="sources">
           <li><b>Open Food Facts / Open Beauty Facts</b> — crowd-sourced packaged-product ingredient lists and barcodes (food, drink, cosmetics)</li>
           <li><b>openFDA drug labels &amp; NIH DailyMed</b> — official US medicine and vaccine labelling, including inactive-ingredient (excipient) lists</li>
@@ -827,10 +1269,16 @@ footer p{margin:0 0 6px;font-size:12.5px;color:var(--faint);line-height:1.6;max-
   </form>
 </dialog>
 
-<footer>
-  <div class="wrap">
-    <p><b>Ingredient Ledger</b> · a reference for what is in your food, drink, medicine and where it came from. Verdicts are guidance, not certification — always check the pack in your hand.</p>
-    <p id="built"></p>
+<footer class="foot">
+  <div class="wrap foot__grid">
+    <div class="foot__brand">
+      <b>Ingredient Ledger</b>
+      <p>An independent reference for what is in your food, drink and medicine, and where it came from.</p>
+      <p class="foot__meta" id="built"></p>
+    </div>
+    <nav class="foot__col" aria-label="Footer"><h4>Use</h4><a href="#search">Search</a><a href="#scan">Scan a label</a><a href="#eat">Restaurants &amp; groceries</a><a href="#index">Reference index</a><a href="#guide">Field guide</a></nav>
+    <div class="foot__col"><h4>Data</h4><p>Open Food Facts, USDA FoodData Central, openFDA and DailyMed, OpenStreetMap, Wikidata and Wikipedia. Each result names its source.</p><a href="https://github.com/ranjpun/ingredient-ledger" target="_blank" rel="noopener">Source code, GPL-3.0 ↗</a></div>
+    <div class="foot__col"><h4>Honest limits</h4><p>Guidance, not certification. Not medical, religious or allergy advice. Recipes change, so check the pack in your hand.</p></div>
   </div>
 </footer>
 
@@ -932,6 +1380,7 @@ const FIT_ICON = {
   maybe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 7v6M12 17h.01"/></svg>'
 };
 const fitHTML = f => '<span class="fit ' + f + '">' + FIT_ICON[f] + FIT_TEXT[f] + ' <span style="opacity:.7;font-weight:400">(' + PROFILE_NAME[state.profile] + ')</span></span>';
+const INDEX_REVIEWED = "2026-11-17"; /* the date the curated index was last reviewed; update when entries change */
 const GUIDANCE_NOTE = '<p class="verdict-note">Guidance, not certification. Check the current label.</p>';
 function evidenceText(e){
   if(e.live) return "Added live from the Open Food Facts ingredient database (community-maintained), then classified with this site's rules; not yet reviewed by Ingredient Ledger.";
@@ -942,8 +1391,10 @@ function evidenceHTML(e){
   if(e.live) return '<p class="evidence-note"><b>Added live, not yet reviewed.</b> Classified from the Open Food Facts ingredient database (community-maintained) with this site\'s rules (egg and cheese count as non-vegetarian). Check the current label.' + (e.wd ? ' <a target="_blank" rel="noopener" href="https://www.wikidata.org/wiki/' + esc(e.wd) + '">Wikidata ↗</a>' : '') + ' <a target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=' + encodeURIComponent(e.n) + '">How it\'s made (Wikipedia) ↗</a></p>';
   const sourceLinks = (e.sources || []).map(source => '<a target="_blank" rel="noopener" href="' + esc(source.url) + '">' + esc(source.label) + ' ↗</a>').join(" · ");
   if(e.c === "rest" && e.sourceStatus === "needs-verification") return '<p class="evidence-note"><b>Needs verification.</b> The business advertises its chaap as “100% vegetarian” and “zero meat”; this is not independent certification. The pages do not clarify egg use across the full menu or outlet-specific preparation. Ask before ordering; vegan status is not established. ' + sourceLinks + '</p>';
-  return '<p class="evidence-note"><b>Guidance, not certification.</b> Based on Ingredient Ledger’s curated reference, not maker-specific verification; check the current label.' +
-    (e.v === "maybe" || e.g === "maybe" ? ' <b>Uncertain source:</b> confirm this ingredient with its manufacturer.' : '') +
+  const specific = (e.v === "maybe" || e.g === "maybe") || e.c === "rest" || (e.sources || []).length;
+  if(!specific) return "";
+  return '<p class="evidence-note">' +
+    (e.v === "maybe" || e.g === "maybe" ? '<b>Uncertain source:</b> confirm this ingredient with its manufacturer.' : '') +
     (e.c === "rest" ? ' This is <b>' + esc(e.region) + '</b> guidance; menus and preparation can vary by location. Check the current local menu.' : '') +
     (sourceLinks ? ' Sources: ' + sourceLinks : '') + '</p>';
 }
@@ -953,6 +1404,8 @@ DATA.forEach((e,i) => { e.i = i; e.k = klass(e); });
 /* ====================================================================== search index */
 const CATS = [["all","Everything"],["add","Additives & E-numbers"],["ing","Ingredients & dairy"],["dish","Dishes"],["rest","Restaurants"],["drink","Drinks"],["med","Medicines"],["vac","Vaccines"],["hidden","Hidden label terms"]];
 CATS.push(["live","Added live"]);
+CATS.splice(1, 0, ["gf","Gluten-free"]);
+const inCat = (e, cat) => !cat || cat === "all" || (cat === "gf" ? e.gf === "yes" : e.c === cat);
 const CATNAME = Object.fromEntries(CATS);
 const RESTAURANT_REGIONS = {
   "McDonald's India (veg menu)":"India",
@@ -1006,7 +1459,7 @@ function searchLocal(q, opts){
   opts = opts || {};
   const ts = toks(q); if(!ts.length) return [];
   const full = qnorm(q);
-  let rows = DATA.filter(e => (!opts.cat || opts.cat === "all" || e.c === opts.cat) && (!opts.k || opts.k === "all" || e.k === opts.k));
+  let rows = DATA.filter(e => inCat(e, opts.cat) && (!opts.k || opts.k === "all" || e.k === opts.k));
   rows = rows.map(e => [e, score(e, ts, full)]).filter(x => x[1] > 0);
   rows.sort((a,b) => b[1] - a[1] || a[0].i - b[0].i);
   return rows.map(x => x[0]);
@@ -1060,6 +1513,21 @@ function originClass(o){
   return "";
 }
 const kbadge = e => '<span class="badge k-' + e.k + '"><i></i>' + esc(klassLabel(e)) + '</span>';
+function algRowHTML(e){
+  if(!e.alg) return "";
+  const mine = myAlg();
+  const chip = (id, kind) => '<span class="achip ' + kind + (mine.has(id) ? " mine" : "") + '">' + esc(ALG_BY[id].name) + '</span>';
+  const hit = e.alg.contains.filter(id => mine.has(id));
+  const dep = e.alg.depends.filter(id => mine.has(id));
+  const gl = e.gf && e.gf !== "na" ? '<span class="gfbadge gf-' + e.gf + '">' + GF_LABEL[e.gf] + '</span>' : "";
+  const dish = e.c === "dish";
+  const parts = (e.alg.contains.length ? '<span class="alab">' + (dish ? "Usually" : "Allergens") + '</span>' + e.alg.contains.map(id => chip(id, "c")).join("") : "") +
+    (e.alg.depends.length ? '<span class="alab">' + (dish ? "Often" : "Depends on source") + '</span>' + e.alg.depends.map(id => chip(id, "m")).join("") : "");
+  if(!gl && !parts) return "";
+  return '<div class="algrow">' + gl + parts + '</div>' +
+    (hit.length ? '<div class="aalert bad sm"><b>Contains your allergen:</b> ' + esc(hit.map(id => ALG_BY[id].name).join(", ")) + '</div>'
+      : dep.length ? '<div class="aalert warn sm"><b>Check:</b> may contain ' + esc(dep.map(id => ALG_BY[id].name).join(", ")) + ', depending on the ' + (dish ? "recipe" : "source") + '.</div>' : "");
+}
 const veganBadge = e => e.v === "yes" ? "" : '<span class="badge plain">' + (e.v === "no" ? "Not vegan" : "Vegan unclear") + '</span>';
 
 function card(e, ts){
@@ -1071,13 +1539,14 @@ function card(e, ts){
         '<div class="card__id"><h3>' + mark(e.n, ts) + '</h3><div class="aka">' + mark(e.aka, ts) + '</div></div>' +
         '<div class="badges">' + kbadge(e) + veganBadge(e) + '<span class="badge plain' + (e.live ? ' livebadge' : '') + '">' + esc(e.live ? "Added live · Open Food Facts" : (CATNAME[e.c] || "")) + '</span>' + (e.c === "rest" ? '<span class="badge plain">' + esc(e.region) + '</span>' : '') + '</div>' +
       '</div>' +
-      fitHTML(fit(e)) +
+      fitHTML(fit(e)) + algRowHTML(e) +
         evidenceHTML(e) +
       '<div class="card__body">' +
         '<div class="field"><dt>How it\'s derived</dt><dd>' + (e.o ? '<span class="origin ' + originClass(e.o) + '">' + esc(e.o) + '</span>' : '') + mark(e.h, ts) + '</dd></div>' +
         (e.kl ? '<div class="field"><dt>Animal killed?</dt><dd><span class="killchip ' + e.kl + '">' + ({yes:"Yes", no:"No", none:"No animal", depends:"Depends"})[e.kl] + '</span>' + esc(e.kn || "") + '</dd></div>' : '') +
         (e.dz ? '<div class="field"><dt>Disclaimer</dt><dd><div class="disclaimer">' + esc(e.dz) + '</div></dd></div>' : '') +
         (e.t ? '<div class="field note"><dt>In practice</dt><dd>' + mark(e.t, ts) + '</dd></div>' : '') +
+        ((e.c === "med" || e.c === "vac") ? (x => x ? '<div class="field"><dt>Component warnings</dt><dd>' + x + '</dd></div>' : '')(excipientHTML([e.n, e.aka, e.s].join(" "))) : '') +
         (e.alt ? '<div class="field alt"><dt>Alternatives</dt><dd>' + mark(e.alt, ts) + ' <a target="_blank" rel="noopener" href="https://www.google.com/search?q=' + encodeURIComponent((state.profile === "vegan" ? "vegan" : "vegetarian") + " alternative to " + e.n.replace(/\(.*?\)/g, "")) + '">Search more ↗</a></dd></div>' : '') +
       '</div>' +
       (terms ? '<div class="terms">' + terms + '</div>' : '') +
@@ -1204,17 +1673,17 @@ const TILES = [
   ["Swaps & alternatives", "Vegetarian and vegan replacements for animal ingredients, medicines and vaccines.", "all", "", "swaps"],
   ["E-numbers & additives", "Carmine, shellac, gelatine, lecithin, emulsifiers — which are insect, animal or plant.", "add", "add"],
   ["Cheese & dairy", "Parmesan, mozzarella, paneer, whey, rennet: which counts as vegetarian.", "ing", "cheese"],
+  ["Gluten-free", "Ingredients, additives, drinks and dishes with no gluten source, plus what to check.", "gf", ""],
   ["Hidden label words", "‘Natural flavouring’, ‘emulsifier’, ‘spices’, ‘glazing agent’ decoded.", "hidden", ""],
   ["Medicines & capsules", "Gelatine capsules, lactose, insulin, heparin, supplements.", "med", ""],
   ["Vaccines", "Gelatine, egg and cell-culture ingredients in common vaccines.", "vac", ""],
   ["Drinks & alcohol", "Beer, wine, spirits, juices — fining agents and colours.", "drink", ""],
-  ["Dishes by cuisine", "Indian, Thai, Italian, Japanese and more — hidden stock, fish sauce and egg.", "dish", ""],
-  ["Restaurants", "Region-specific restaurant references; verify the current local menu and preparation.", "rest", ""]
+  ["Dishes by cuisine", "Indian, Thai, Italian, Japanese and more — hidden stock, fish sauce and egg.", "dish", ""]
 ];
 function buildTiles(){
-  const cnt = {}; DATA.forEach(e => cnt[e.c] = (cnt[e.c]||0) + 1);
+  const cnt = {}; DATA.forEach(e => { cnt[e.c] = (cnt[e.c]||0) + 1; if(e.gf === "yes") cnt.gf = (cnt.gf||0) + 1; });
   $("#tiles").innerHTML = TILES.map((t,i) =>
-    '<button class="tile" data-tile="' + i + '"><b>' + t[0] + '</b><span>' + t[1] + '</span><small>' + (t[4] === "recipes" ? "live →" : t[4] === "swaps" ? DATA.filter(e => e.alt).length + " swaps →" : (cnt[t[2]]||0) + ' entries →') + '</small></button>').join("");
+    '<button class="tile' + (i < 2 ? ' feat' : '') + '" data-tile="' + i + '"><b>' + t[0] + '</b><span>' + t[1] + '</span><small>' + (t[4] === "recipes" ? "live →" : t[4] === "swaps" ? DATA.filter(e => e.alt).length + " swaps →" : (cnt[t[2]]||0) + ' entries →') + '</small></button>').join("");
 }
 function buildLegend(){
   $("#legend").innerHTML = LEGEND.map(k =>
@@ -1243,7 +1712,7 @@ function runSearch(raw, opts){
   if(looksList){
     html += '<div class="listbanner"><span><b>This looks like an ingredient list.</b> Check every ingredient in it at once.</span><button class="btn sm clay" id="tosscan">Analyse as a label</button></div>';
   }
-  html += '<section class="rsec" id="sec-local"><header><h2>' + (isBarcode ? "Barcode" : "In the index") + '</h2><span class="src">Built-in reference · works offline</span><span class="st">' + (isBarcode ? "" : rows.length + " match" + (rows.length === 1 ? "" : "es")) + '</span></header>';
+  html += '<section class="rsec" id="sec-local"><header><h2>' + (isBarcode ? "Barcode" : "In the index") + '</h2><span class="src">Built-in reference · works offline</span><p class="guideline">Curated guidance, not certification. Recipes change, so check the current label.</p><span class="st">' + (isBarcode ? "" : rows.length + " match" + (rows.length === 1 ? "" : "es")) + '</span></header>';
   if(isBarcode){
     html += '<div class="msg">Looking up barcode <b>' + esc(code) + '</b> in live product databases below.</div>';
   } else if(rows.length){
@@ -1333,6 +1802,441 @@ async function getJSONdirect(url, sig, opts){
 const errBox = (what, err, retryId) => '<div class="msg err"><b>Couldn\'t reach ' + what + '.</b> ' + esc(err && err.message || "") +
   ' This is usually a network, ad-blocker or rate-limit issue, not a missing item. ' + (retryId ? '<button class="btn sm ghost" data-retry="' + retryId + '">Try again</button>' : '') + '</div>';
 
+/* ====================================================================== ALLERGENS & GLUTEN
+   The 14 allergens that EU law requires on every label (Regulation (EU) 1169/2011, Annex II).
+   They also cover the US "Big 9" (FALCPA 2004 + FASTER Act 2021, which added sesame).
+   Detection = the product's declared allergen tags (Open Food Facts) plus a word scan of the ingredient text.
+   EU Annex II exemptions are applied: wheat/barley glucose syrups, wheat maltodextrin, fully refined soya oil,
+   soya tocopherols/phytosterols, fish gelatine or isinglass used as a fining agent, and nut or whey distillates. */
+const ALG = [
+  {id:"gluten", name:"Gluten", off:["en:gluten"], rx:/\b(wheat|whole ?wheat|barley|rye|spelt|kamut|khorasan|triticale|einkorn|emmer|farro|durum|semolina|bulgu?r|cous ?cous|seitan|freekeh|atta|maida|sooji|suji|rava|graham flour|malt(ed)?|malt (extract|vinegar|flour)|brewer'?s yeast|oats?|oatmeal|porridge oats|gluten)\b/, note:"Wheat, rye, barley, oats, spelt, kamut and their hybrids (EU Annex II). Oats are listed by law; oats labelled gluten-free are made to stay below 20 mg/kg."},
+  {id:"crustaceans", name:"Crustaceans", off:["en:crustaceans"], rx:/\b(crustaceans?|shrimps?|prawns?|crabs?|lobsters?|crayfish|krill|langoustines?|scampi|shellfish)\b/},
+  {id:"eggs", name:"Egg", off:["en:eggs"], rx:/\b(eggs?|egg (white|yolk|powder)|albumen|ovalbumin|ovomucoid|lysozyme|e1105|mayonnaise|mayo|meringue)\b/},
+  {id:"fish", name:"Fish", off:["en:fish"], rx:/\b(fish|anchov(y|ies)|cod|salmon|tuna|sardines?|mackerel|haddock|pollock|tilapia|hake|herring|trout|bonito|dashi|fish sauce|worcestershire)\b/},
+  {id:"peanuts", name:"Peanut", off:["en:peanuts"], rx:/\b(peanuts?|groundnuts?|arachis|monkey ?nuts?)\b/},
+  {id:"soybeans", name:"Soy", off:["en:soybeans"], rx:/\b(soy|soya|soybeans?|soja|tofu|tempeh|edamame|miso|shoyu|tamari|natto|textured vegetable protein|tvp)\b/},
+  {id:"milk", name:"Milk", off:["en:milk"], rx:/\b(milk|milk (powder|solids|fat|protein)|cream|butter|butterfat|buttermilk|ghee|cheeses?|whey|casein(ate)?s?|lactose|lactalbumin|lactoglobulin|yoghurts?|yogurts?|curds?|paneer|khoa|khoya|dahi|kefir|lassi|skyr|quark|custard)\b/},
+  {id:"nuts", name:"Tree nuts", off:["en:nuts"], rx:/\b(almonds?|hazelnuts?|filberts?|walnuts?|cashews?|pecans?|brazil nuts?|pistachios?|macadamias?|queensland nuts?|marzipan|praline|nougat|nuts?)\b/, note:"Almond, hazelnut, walnut, cashew, pecan, Brazil nut, pistachio and macadamia (EU). Coconut is not a tree-nut allergen under EU law or current FDA guidance."},
+  {id:"celery", name:"Celery", off:["en:celery"], rx:/\b(celery|celeriac|celery (seed|salt))\b/},
+  {id:"mustard", name:"Mustard", off:["en:mustard"], rx:/\b(mustard|mustard (seed|oil|flour))\b/},
+  {id:"sesame", name:"Sesame", off:["en:sesame-seeds"], rx:/\b(sesame|tahini|tahina|gingelly|benne)\b/},
+  {id:"sulphites", name:"Sulphites", off:["en:sulphur-dioxide-and-sulphites"], rx:/\b(sulph?ites?|sulfites?|sulph?ur dioxide|sulfur dioxide|meta ?bisulph?ite|metabisulfite|e ?22[0-8])\b/, note:"Must be declared above 10 mg/kg or 10 mg/litre as SO₂."},
+  {id:"lupin", name:"Lupin", off:["en:lupin"], rx:/\b(lupin[es]?|lupini)\b/},
+  {id:"molluscs", name:"Molluscs", off:["en:molluscs"], rx:/\b(molluscs?|mussels?|oysters?|oyster sauce|clams?|scallops?|squid|calamari|octopus|cuttlefish|snails?|escargots?|abalone|whelks?)\b/}
+];
+const ALG_BY = Object.fromEntries(ALG.map(a => [a.id, a]));
+const ALG_EXEMPT = [
+  /(wheat|barley)[- ]?(based )?(glucose|dextrose|glucose[- ]fructose) syrups?|(glucose|dextrose|glucose[- ]fructose) syrups? \((from )?(wheat|barley)\)|dextrose \((from )?wheat\)/g,
+  /(wheat[- ]?(based )?maltodextrins?|maltodextrins? \((from )?wheat\))/g,
+  /(fully )?refined soy(a|bean)? ?(bean )?oil|soy(a|bean)? oil \(refined\)|(natural )?mixed tocopherols? \(soy(a)?\)|tocopherols? \((from )?soy(a)?\)|phytosterols? \((from )?soy(a)?\)/g,
+  /(isinglass|fish gelatine?) (used )?(as a )?fining|fined (with|using) (isinglass|fish gelatine?)/g,
+  /bean ?curd|cocoa butter|shea butter|peanut butter cups?|nut butter|butter ?beans?|butternut|coconut (milk|cream|butter)|(almond|oat|rice|soy|soya|cashew|hemp|pea|coconut) (milk|drink|cream|yoghurt|yogurt)|cream of tartar|ice cream plant|milk thistle|nutmeg|doughnut|coconuts?|water ?chestnuts?|chestnuts?|pine nuts?|buckwheat|egg ?plants?|eggless|egg[- ]free|milk[- ]free|dairy[- ]free|nut[- ]free|soy[- ]free|gluten[- ]free (oats?|oat flakes|oatmeal)|gluten[- ]free|crab ?apples?|cream crackers?|fish ?less|rice malt|malt ?(o|ol)dextrin|maltodextrins?|maltitol|maltose|isomalt|cod liver oil/g
+];
+/* allergens contained by text = list of ids; "may contain" clauses are read separately as traces */
+const MAY_RX = /(may contain|may also contain|traces? of|can contain|produced (in|on)[^.;]*(also|that)? (handles|processes|uses)|made (in|on)[^.;]*(also|that)? (handles|processes|uses)|manufactured (in|on)[^.;]*(also|that)? (handles|processes)|processed in a (factory|facility)[^.;]*|not suitable for[^.;]*allerg[^.;]*)[^.;]*/gi;
+function allergenWords(t){
+  let s = " " + norm(t).replace(/[()[\]{}]/g, m => " " + m + " ") + " ";
+  ALG_EXEMPT.forEach(re => { s = s.replace(re, " "); });
+  const found = {};
+  ALG.forEach(a => { const m = s.match(new RegExp(a.rx.source, "g")); if(m) found[a.id] = [...new Set(m.map(x => x.trim()))]; });
+  return found;
+}
+function allergenScan(text){
+  text = String(text || "");
+  const traces = []; let main = text.replace(MAY_RX, m => { traces.push(m); return " "; });
+  const c = allergenWords(main), m = allergenWords(traces.join(" ; "));
+  Object.keys(c).forEach(k => delete m[k]);
+  return {contains:c, may:m};
+}
+/* gluten from text: "no" contains gluten, "maybe" may contain, "yes" no gluten source found */
+function glutenOf(scan){ return scan.contains.gluten ? "no" : scan.may.gluten ? "maybe" : "yes"; }
+
+/* The user's allergen profile (kept in this browser) */
+state.allergens = (store.get("il-allergens") || "").split(",").filter(id => ALG_BY[id]);
+state.noGluten = store.get("il-nogluten") === "1";
+const myAlg = () => new Set(state.allergens.concat(state.noGluten ? ["gluten"] : []));
+
+/* ---- index entries: gluten status + allergens, from the entry's own words.
+   Words in the name, aliases or keywords = contains; words only in the source description = depends on the source. */
+/* Hand-checked overrides where words alone mislead. gf: gluten status; c: contains; d: depends on the recipe/source. */
+const ALG_FIX = {
+  "E441 Gelatine":{d:["fish"], c:[]}, "E322 Lecithin":{c:[], d:["soybeans","eggs"]}, "E270 Lactic acid":{d:[]},
+  "E1400-1452 Modified starches":{gf:"maybe", d:["gluten"]},
+  "Royal jelly and propolis":{c:[], d:[]}, "Tofu":{c:["soybeans"], d:[]}, "Fish oil":{c:["fish"], d:["crustaceans"]},
+  "Margarine":{c:[], d:["milk","soybeans"]}, "Vegan cheese and plant-based cheese":{c:[], d:["nuts","soybeans"]},
+  "Stock cubes, bouillon and gravy granules":{gf:"maybe", c:[], d:["gluten","celery","milk","fish"]},
+  "Crisps and snack seasonings":{gf:"maybe", c:[], d:["milk","gluten","crustaceans"]}, "Aquafaba and egg replacers":{c:[], d:[]},
+  "Plant milks":{c:[], d:["soybeans","nuts","gluten"], gf:"maybe"}, "Natural flavouring":{d:["milk","eggs","fish","gluten"], gf:"maybe"},
+  "Bread (commercial)":{gf:"no", c:["gluten"], d:["milk","eggs","soybeans","sesame"]}, "Fresh pasta":{gf:"no", c:["gluten","eggs"]},
+  "Instant noodles":{gf:"no", c:["gluten"], d:["soybeans","fish","crustaceans","milk"]}, "Breakfast cereal":{gf:"maybe", d:["gluten","milk","nuts"]},
+  "Ice cream":{c:["milk"], d:["eggs","nuts"]}, "Peanut butter":{c:["peanuts"], d:[]}, "Chewing gum":{d:[]},
+  "Soy sauce":{gf:"no", c:["soybeans","gluten"]}, "Miso":{gf:"maybe", c:["soybeans"], d:["gluten"]}, "Oyster sauce":{gf:"maybe", c:["molluscs"], d:["gluten","soybeans"]},
+  "Asafoetida":{gf:"maybe", d:["gluten"]}, "Vinegar":{gf:"maybe", d:["gluten","sulphites"]}, "Nutritional yeast":{d:[]},
+  "Gummy sweets, marshmallows and jelly":{d:["fish"]}, "Dark chocolate":{d:["milk","nuts","soybeans"]}, "Milk chocolate":{c:["milk"], d:["nuts","soybeans"]},
+  "Beer (cask and traditional)":{gf:"no", c:["gluten"], d:["fish"]}, "Milk stout":{gf:"no", c:["gluten","milk"]}, "Oyster stout":{gf:"no", c:["gluten","molluscs"]},
+  "Whisky, vodka, gin and rum":{gf:"yes", c:[], d:[]}, "Wine (red and white)":{c:["sulphites"], d:["eggs","milk","fish"]},
+  "Champagne and sparkling wine":{c:["sulphites"], d:["eggs","milk","fish"]}, "Bubble tea":{d:["milk"]}, "Plant milks ":{},
+  "'Vegetarian' symbol (India)":{c:[], d:[]}, "'Gelatine (unspecified)'":{d:["fish"]},
+  /* dishes: c = classic recipe contains it, d = often contains it */
+  "Biryani":{gf:"maybe", c:["milk"], d:["nuts"]}, "Naan":{gf:"no", c:["gluten","milk"], d:["eggs"]}, "Paneer butter masala":{gf:"maybe", c:["milk"], d:["nuts"]},
+  "Dal makhani":{gf:"maybe", c:["milk"]}, "Dal fry and dal tadka":{gf:"maybe", d:["milk"]}, "Chana masala":{gf:"maybe"}, "Rajma":{gf:"maybe"},
+  "Idli and dosa":{gf:"maybe", d:["milk"]}, "Sambar and rasam":{gf:"maybe"}, "Vada and bhajji":{gf:"maybe"}, "Pav bhaji":{gf:"no", c:["gluten","milk"]},
+  "Samosa":{gf:"no", c:["gluten"]}, "Gulab jamun":{gf:"no", c:["gluten","milk"], d:["nuts"]}, "Jalebi":{gf:"no", c:["gluten"], d:["milk"]},
+  "Ladoo, barfi and halwa":{gf:"maybe", c:["milk"], d:["nuts","gluten"]}, "Kheer":{gf:"maybe", c:["milk"], d:["nuts","gluten"]},
+  "Masala chai and filter coffee":{gf:"yes", d:["milk"]}, "Caesar salad":{gf:"no", c:["gluten","eggs","fish","milk"], d:["mustard"]},
+  "Greek salad":{gf:"yes", c:["milk"]}, "Pesto pasta":{gf:"no", c:["gluten","milk","nuts"]}, "Margherita pizza":{gf:"no", c:["gluten","milk"]},
+  "Risotto":{gf:"maybe", c:["milk"], d:["celery"]}, "Minestrone":{gf:"maybe", d:["gluten","celery","milk"]}, "Bruschetta":{gf:"no", c:["gluten"]},
+  "French fries and wedges":{gf:"maybe", d:["gluten"]}, "Onion rings":{gf:"no", c:["gluten"], d:["eggs","milk"]},
+  "Veggie burger":{gf:"no", c:["gluten"], d:["eggs","soybeans","milk","mustard","sesame"]}, "Sushi":{gf:"maybe", d:["fish","soybeans","sesame","eggs","gluten"]},
+  "Miso soup":{gf:"maybe", c:["soybeans"], d:["fish","gluten"]}, "Ramen":{gf:"no", c:["gluten","soybeans"], d:["eggs","fish","sesame"]},
+  "Pad thai":{gf:"maybe", d:["peanuts","eggs","fish","soybeans","gluten"]}, "Thai green and red curry":{gf:"maybe", d:["crustaceans","fish"]},
+  "Tom yum":{gf:"maybe", d:["crustaceans","fish"]}, "Fried rice":{gf:"maybe", d:["eggs","soybeans","gluten","fish","molluscs"]},
+  "Hakka noodles and Manchurian":{gf:"no", c:["gluten","soybeans"]}, "Momos and dumplings":{gf:"no", c:["gluten"], d:["soybeans"]},
+  "Spring rolls":{gf:"no", c:["gluten"], d:["eggs","soybeans"]}, "Hummus, falafel and tabbouleh":{gf:"maybe", c:["sesame"], d:["gluten"]},
+  "Guacamole, salsa and nachos":{gf:"maybe", d:["milk"]}, "Refried beans and bean burrito":{gf:"no", c:["gluten"], d:["milk"]},
+  "Pho":{gf:"maybe", d:["fish","soybeans"]}, "Banh mi":{gf:"no", c:["gluten"], d:["eggs","fish","soybeans"]},
+  "Kimchi":{gf:"maybe", d:["fish","crustaceans"]}, "Bibimbap":{gf:"maybe", d:["eggs","soybeans","sesame","gluten"]}, "Tteokbokki":{gf:"maybe", d:["gluten","fish","soybeans"]},
+  "Tempura":{gf:"no", c:["gluten"], d:["eggs","crustaceans","fish"]}, "Okonomiyaki":{gf:"no", c:["gluten","eggs"], d:["fish"]},
+  "Cheesecake":{gf:"no", c:["milk","gluten"], d:["eggs"]}, "Tiramisu":{gf:"no", c:["gluten","milk","eggs"]}, "Mousse and panna cotta":{gf:"maybe", c:["milk"], d:["eggs"]},
+  "Baklava":{gf:"no", c:["gluten","nuts"], d:["milk"]}, "Croissant and puff pastry":{gf:"no", c:["gluten"], d:["milk","eggs"]},
+  "Pancakes, waffles and French toast":{gf:"no", c:["gluten","milk","eggs"]}, "Omelette and egg dishes":{gf:"maybe", c:["eggs"], d:["milk"]},
+  "Paneer tikka":{gf:"maybe", c:["milk"]}, "Shawarma and doner (veg options)":{gf:"no", c:["gluten"], d:["milk","sesame"]},
+  "Buddha bowl and grain bowls":{gf:"maybe", d:["sesame","soybeans","gluten"]}, "Ratatouille and roast vegetables":{gf:"yes"},
+  "Cakes, brownies and egg-baked goods":{gf:"no", c:["gluten","eggs","milk"]}, "Pizza and pasta sauces with cheese or anchovy":{gf:"maybe", d:["milk","fish"]},
+  /* medicines & vaccines (allergen-relevant facts only) */
+  "Lactose monohydrate (excipient)":{c:["milk"]}, "Lactulose":{d:[]}, "Vitamin D supplement":{d:["fish"]}, "Paracetamol and common tablets":{d:["milk"]}, "Toothpaste":{c:[]},
+  "Influenza vaccine (egg based)":{c:["eggs"]}, "Yellow fever vaccine":{c:["eggs"]}, "Rabies vaccine":{d:["eggs"]}
+};
+function entryAllergens(e){
+  const strong = allergenScan([e.n, e.aka, (e.kw || []).join(", ")].join(", "));
+  const weak = allergenScan([e.s, e.h].join(". "));
+  const contains = Object.keys(strong.contains);
+  const depends = [...new Set(Object.keys(weak.contains).concat(Object.keys(weak.may), Object.keys(strong.may)))].filter(id => !contains.includes(id));
+  return {contains, depends};
+}
+function prepAllergens(e){
+  const fx = ALG_FIX[e.n] || {};
+  if(e.c === "rest"){ e.alg = {contains:[], depends:[]}; e.gf = "maybe"; return; }
+  if(e.c === "vac"){ e.alg = {contains:fx.c || [], depends:fx.d || []}; e.gf = "na"; return; }
+  e.alg = (e.c === "dish" || e.c === "med") ? {contains:[], depends:[]} : entryAllergens(e);
+  if(fx.c) e.alg.contains = fx.c;
+  if(fx.d) e.alg.depends = fx.d.filter(id => !e.alg.contains.includes(id));
+  if(fx.gf) e.gf = fx.gf;
+  else if(e.alg.contains.includes("gluten")) e.gf = "no";
+  else if(e.alg.depends.includes("gluten")) e.gf = "maybe";
+  else if(e.c === "dish") e.gf = "maybe";
+  else if(e.c === "med" || e.c === "live") e.gf = "check";
+  else e.gf = "yes";
+  e.alg.depends = [...new Set(e.alg.depends)].filter(id => !e.alg.contains.includes(id));
+}
+const GF_LABEL = {yes:"Gluten-free", no:"Contains gluten", maybe:"Gluten: depends", check:"Gluten: check label", na:""};
+
+/* ====================================================================== LEDGER HEALTH RATING (Ingredient Ledger's own method)
+   Built from established standards and weighted by the strength of peer-reviewed evidence behind each part:
+     nutrition 50%  Nutri-Score (EU front-of-pack standard derived from the UK FSA nutrient profiling model; diets of
+                    lower Nutri-Score quality predicted higher cancer risk in the EPIC cohort of 471,495 adults, PLoS Med 2018)
+     processing 25% NOVA classification (an umbrella review of 45 meta-analyses, about 10 million people, BMJ 2024, found
+                    ultra-processed food linked to 32 health outcomes; an NIH randomised trial, Cell Metab 2019, showed
+                    ultra-processed diets drive about 500 extra kcal a day)
+     additives 25%  regulator and IARC decisions only (see below)
+     organic 0%     shown as information only: systematic review evidence (Ann Intern Med 2012) shows lower pesticide residues
+                    but no clear nutritional or health advantage
+   A high-risk additive caps the rating at 39. Bands: 80+ Excellent, 60–79 Good, 40–59 Fair, 20–39 Limit, under 20 Poor.
+   Additive risk levels use only regulatory decisions and IARC classifications (no single studies, no precaution-only flags):
+     high     = not authorised / withdrawn in the EU, or IARC Group 1–2A as used in food
+     moderate = mandatory EU warning label, banned or revoked in the US, or IARC Group 2B
+     limited  = EFSA found intake can exceed the safe level for some groups, or a mandatory laxative/phenylalanine warning
+     none     = authorised, with no regulator warning recorded here */
+const SRC = {
+  efsaE171: ["EFSA 2021: E171 no longer considered safe","https://doi.org/10.2903/j.efsa.2021.6585"],
+  eu2022_63: ["EU ban: Regulation (EU) 2022/63","https://eur-lex.europa.eu/eli/reg/2022/63/oj"],
+  iarc: ["IARC Monographs: list of classifications","https://monographs.iarc.who.int/list-of-classifications/"],
+  efsaNitrite: ["EFSA 2017 nitrite re-evaluation","https://doi.org/10.2903/j.efsa.2017.4786"],
+  eu1333: ["EU additives law: Regulation (EC) 1333/2008 (Annex V warning)","https://eur-lex.europa.eu/eli/reg/2008/1333/oj"],
+  mccann: ["McCann et al., Lancet 2007 (Southampton study)","https://doi.org/10.1016/S0140-6736(07)61306-3"],
+  fdaRed3: ["FDA 2025: Red No. 3 revoked in food and ingested drugs","https://www.fda.gov/food/hfp-constituent-updates/fda-revoke-authorization-use-red-no-3-food-and-ingested-drugs"],
+  fdaColor: ["FDA colour additive status list","https://www.fda.gov/industry/color-additive-inventories/color-additive-status-list"],
+  fdaBVO: ["FDA 2024: brominated vegetable oil revoked","https://www.fda.gov/food/food-additives-petitions/brominated-vegetable-oil-bvo"],
+  whoAsp: ["WHO/IARC/JECFA 2023 aspartame assessment","https://www.who.int/news/item/14-07-2023-aspartame-hazard-and-risk-assessment-results-released"],
+  efsaGlu: ["EFSA 2017 glutamates re-evaluation","https://doi.org/10.2903/j.efsa.2017.4910"],
+  efsaPhos: ["EFSA 2019 phosphates re-evaluation","https://doi.org/10.2903/j.efsa.2019.5674"],
+  efsaCarr: ["EFSA 2018 carrageenan re-evaluation","https://doi.org/10.2903/j.efsa.2018.5238"],
+  efsaBenz: ["EFSA 2016 benzoates re-evaluation","https://doi.org/10.2903/j.efsa.2016.4433"],
+  fdaBenzene: ["FDA: benzene in soft drinks","https://www.fda.gov/food/environmental-contaminants-food/questions-and-answers-occurrence-benzene-soft-drinks-and-other-beverages"],
+  efsaSulph: ["EFSA 2016 sulphites re-evaluation","https://doi.org/10.2903/j.efsa.2016.4438"],
+  efsaAl: ["EFSA 2008 aluminium opinion","https://doi.org/10.2903/j.efsa.2008.754"],
+  eu1169: ["EU labelling law: Regulation (EU) 1169/2011 (Annex III warnings)","https://eur-lex.europa.eu/eli/reg/2011/1169/oj"],
+  efsaRed2G: ["EFSA 2007: Red 2G","https://doi.org/10.2903/j.efsa.2007.515"],
+  nutriscore: ["Santé publique France: Nutri-Score","https://www.santepubliquefrance.fr/en/nutri-score"],
+  epic: ["Deschasaux et al., PLoS Med 2018 (EPIC cohort)","https://doi.org/10.1371/journal.pmed.1002651"],
+  monteiro: ["Monteiro et al., Public Health Nutr 2018 (NOVA)","https://doi.org/10.1017/S1368980017000234"],
+  bmjUpf: ["Lane et al., BMJ 2024 (umbrella review, ultra-processed food)","https://doi.org/10.1136/bmj-2023-077310"],
+  hall: ["Hall et al., Cell Metab 2019 (NIH randomised trial)","https://doi.org/10.1016/j.cmet.2019.05.008"],
+  fop: ["UK DoH/FSA front-of-pack labelling guidance (traffic-light thresholds)","https://www.gov.uk/government/publications/front-of-pack-nutrition-labelling-guidance"],
+  organic: ["Smith-Spangler et al., Ann Intern Med 2012 (organic foods review)","https://doi.org/10.7326/0003-4819-157-5-201209040-00007"]
+};
+const ADD_RISK = {};
+function addRisk(codes, level, why, src){ codes.forEach(c => { ADD_RISK[c] = {level, why, src}; }); }
+addRisk(["e171"], "high", "EFSA concluded in 2021 that a genotoxicity concern cannot be ruled out, so it can no longer be considered safe as a food additive. Banned in EU food since 2022.", ["efsaE171","eu2022_63"]);
+addRisk(["e249","e250","e251","e252"], "high", "Nitrites and nitrates can form nitrosamines. IARC classes ingested nitrate/nitrite under conditions that cause nitrosation as probably carcinogenic (Group 2A), and processed meat as Group 1. EFSA set limits in 2017 and noted nitrosamine formation as a concern.", ["iarc","efsaNitrite"]);
+addRisk(["e128"], "high", "Withdrawn in the EU in 2007 after EFSA found it forms a substance that may be genotoxic and carcinogenic.", ["efsaRed2G"]);
+addRisk(["e216","e217"], "high", "Propyl- and sodium propylparaben were removed from the EU food additive list (effects on reproductive hormones in animal studies).", ["eu1333"]);
+addRisk(["e924","e924a","e927a","e443"], "high", "Not authorised in the EU (potassium bromate, azodicarbonamide, brominated vegetable oil). The US FDA also revoked brominated vegetable oil in 2024.", ["eu1333","fdaBVO"]);
+addRisk(["e102","e104","e110","e122","e124","e129"], "moderate", "EU law requires the warning “may have an adverse effect on activity and attention in children” on foods with this colour, following the Southampton study.", ["eu1333","mccann"]);
+addRisk(["e127"], "moderate", "The US FDA revoked it in food and ingested drugs in 2025 (thyroid tumours in male rats). In the EU it is restricted to cocktail and candied cherries.", ["fdaRed3"]);
+addRisk(["e123"], "moderate", "Banned as a food colour in the US since 1976; permitted in the EU only in a few products.", ["fdaColor"]);
+addRisk(["e952"], "moderate", "Cyclamate is not permitted in US foods (FDA, 1969); permitted in the EU with a limit.", ["eu1333"]);
+addRisk(["e951"], "moderate", "IARC classified aspartame as possibly carcinogenic (Group 2B) in 2023; JECFA kept the acceptable intake at 40 mg/kg body weight a day. It must carry “contains a source of phenylalanine” (harmful for people with PKU).", ["whoAsp"]);
+addRisk(["e320"], "moderate", "BHA is classified by IARC as possibly carcinogenic (Group 2B).", ["iarc"]);
+addRisk(["e150c","e150d"], "moderate", "Ammonia caramels can contain 4-methylimidazole, which IARC classifies as possibly carcinogenic (Group 2B). EU law limits it.", ["iarc"]);
+addRisk(["e220","e221","e222","e223","e224","e225","e226","e227","e228"], "moderate", "Sulphites can trigger asthma and intolerance reactions in sensitive people and are a mandatory allergen above 10 mg/kg. EFSA found that some high consumers may exceed the safe intake.", ["efsaSulph"]);
+addRisk(["e284","e285"], "moderate", "Boric acid and borax are restricted in the EU to sturgeon caviar because of reproductive toxicity.", ["eu1333"]);
+addRisk(["e620","e621","e622","e623","e624","e625"], "limited", "EFSA set a group safe intake of 30 mg/kg body weight a day in 2017 and found that some people may exceed it.", ["efsaGlu"]);
+addRisk(["e338","e339","e340","e341","e343","e450","e451","e452"], "limited", "EFSA set a group safe intake for phosphates in 2019 and found that infants, children and high consumers may exceed it. People with reduced kidney function should limit phosphate.", ["efsaPhos"]);
+addRisk(["e407","e407a"], "limited", "EFSA kept only a temporary safe intake in 2018 because of data gaps, and did not assess use in infants under 16 weeks.", ["efsaCarr"]);
+addRisk(["e210","e211","e212","e213"], "limited", "EFSA re-confirmed a safe intake of 5 mg/kg body weight a day. With vitamin C (ascorbic acid) it can form small amounts of benzene in drinks.", ["efsaBenz","fdaBenzene"]);
+addRisk(["e173","e520","e521","e522","e523","e541","e554","e555","e556","e559"], "limited", "Aluminium compounds: EFSA found the tolerable weekly intake is likely exceeded by a large part of the population, and the EU restricted their use in 2012.", ["efsaAl"]);
+addRisk(["e420","e421","e953","e965","e966","e967","e968"], "limited", "Polyol sweeteners: EU law requires “excessive consumption may produce laxative effects” when added above 10%.", ["eu1169"]);
+const RISK_META = {
+  high:{name:"High risk", cls:"r-high", pts:40}, moderate:{name:"Moderate", cls:"r-mod", pts:20},
+  limited:{name:"Limited", cls:"r-lim", pts:8}, none:{name:"No regulator warning", cls:"r-none", pts:0}
+};
+const addCode = t => String(t || "").replace(/^[a-z]{2}:/, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+function additiveRisks(tags){
+  const codes = [...new Set((tags || []).map(addCode))].filter(c => /^e\d{3}/.test(c));
+  return codes.filter(c => { const b = c.replace(/(?<=\d)[a-z]+$/, ""); return b === c || !codes.includes(b); }).map(c => {
+    const base = c.replace(/(?<=\d)[a-z]+$/, "");
+    const r = ADD_RISK[c] || ADD_RISK[base];
+    return {code:c.toUpperCase(), level:r ? r.level : "none", why:r ? r.why : "", src:r ? r.src : []};
+  });
+}
+const NUTRI_PTS = {a:100, b:75, c:50, d:25, e:0};
+const NOVA_PTS = {1:100, 2:80, 3:60, 4:0};
+const RATING_CAP = 39;
+const SCORE_LABEL = s => s >= 80 ? ["Excellent","s-exc"] : s >= 60 ? ["Good","s-good"] : s >= 40 ? ["Fair","s-fair"] : s >= 20 ? ["Limit","s-poor"] : ["Poor","s-bad"];
+function healthScore(p){
+  const g = String(p.nutriscore_grade || p.nutrition_grade_fr || "").toLowerCase();
+  const adds = additiveRisks(p.additives_tags);
+  const organic = (p.labels_tags || []).some(l => /organic|bio\b|^en:eu-organic|usda-organic|ab-agriculture-biologique|india-organic|jaivik/.test(l));
+  const nova = +p.nova_group || 0;
+  if(!(g in NUTRI_PTS)) return {adds, organic, nova, score:null};
+  const N = NUTRI_PTS[g];
+  const P = NOVA_PTS[nova];
+  const A = Math.max(0, 100 - adds.reduce((t, a) => t + RISK_META[a.level].pts, 0));
+  /* weights by strength of evidence; if NOVA is unknown its share is spread over the other two */
+  let score = P == null ? Math.round((50 * N + 25 * A) / 75) : Math.round(0.5 * N + 0.25 * P + 0.25 * A);
+  const capped = adds.some(a => a.level === "high");
+  if(capped) score = Math.min(score, RATING_CAP);
+  return {score, N, P, A, organic, nova, adds, capped, grade:g};
+}
+const LEVEL_TXT = {high:"High", moderate:"Moderate", low:"Low"};
+function nutrientFlags(p){
+  const nl = p.nutrient_levels || {}, nm = p.nutriments || {};
+  const row = (key, label, unit) => { const lv = nl[key]; const v = nm[key + "_100g"]; if(!lv && v == null) return "";
+    return '<li class="nut ' + (lv || "") + '"><span>' + label + '</span><b>' + (v != null ? (+v).toFixed(v < 10 ? 1 : 0) + " " + unit : "–") + '</b><em>' + (LEVEL_TXT[lv] || "") + '</em></li>'; };
+  const kcal = nm["energy-kcal_100g"];
+  return (kcal != null ? '<li class="nut"><span>Energy</span><b>' + Math.round(kcal) + ' kcal</b><em>per 100 g</em></li>' : '') +
+    row("sugars", "Sugar", "g") + row("salt", "Salt", "g") + row("saturated-fat", "Saturated fat", "g") + row("fat", "Fat", "g") +
+    (nm.fiber_100g != null ? '<li class="nut good"><span>Fibre</span><b>' + (+nm.fiber_100g).toFixed(1) + ' g</b><em></em></li>' : '') +
+    (nm.proteins_100g != null ? '<li class="nut good"><span>Protein</span><b>' + (+nm.proteins_100g).toFixed(1) + ' g</b><em></em></li>' : '');
+}
+const srcLinks = keys => (keys || []).map(k => SRC[k] ? '<a target="_blank" rel="noopener" href="' + SRC[k][1] + '">' + esc(SRC[k][0]) + ' ↗</a>' : "").filter(Boolean).join(" · ");
+function scoreRing(score){
+  const [lab, cls] = SCORE_LABEL(score);
+  return '<div class="ring ' + cls + '" style="--p:' + score + '"><b>' + score + '</b><small>/100</small></div><div class="ringlab"><b>' + lab + '</b><span>Ledger health rating</span></div>';
+}
+function part(name, w, v, note){
+  const val = v == null ? null : Math.round(v);
+  return '<li><span class="pn">' + name + ' <small>' + w + '</small></span><span class="pbar"><i style="width:' + (val == null ? 0 : val) + '%"></i></span><b>' + (val == null ? "–" : val) + '</b><em>' + esc(note) + '</em></li>';
+}
+function healthPanel(p){
+  const h = healthScore(p);
+  const nova = p.nova_group ? '<span class="pill">NOVA ' + p.nova_group + ' · ' + ({1:"unprocessed",2:"culinary ingredient",3:"processed",4:"ultra-processed"})[p.nova_group] + '</span>' : "";
+  const ns = h.grade ? '<span class="nscore ns-' + h.grade + '">Nutri-Score ' + h.grade.toUpperCase() + '</span>' : "";
+  const addList = h.adds.length ? '<ul class="addlist">' + h.adds.slice().sort((a,b) => RISK_META[b.level].pts - RISK_META[a.level].pts).map(a =>
+      '<li><details' + (a.level === "high" ? " open" : "") + '><summary><i class="rdot ' + RISK_META[a.level].cls + '"></i><b>' + esc(a.code) + '</b> ' + esc(addName(a.code)) + '<span class="rlvl ' + RISK_META[a.level].cls + '">' + RISK_META[a.level].name + '</span></summary>' +
+      '<p>' + (a.why ? esc(a.why) : "Authorised food additive. No regulator warning, EU warning label or IARC classification is recorded for it here.") + '</p>' + (a.src.length ? '<p class="srcs">Sources: ' + srcLinks(a.src) + '</p>' : '') + '</details></li>').join("") + '</ul>'
+    : '<p class="note-sm" style="margin:0">No additives listed.</p>';
+  const head = h.score == null
+    ? '<div class="ringlab"><b>No rating yet</b><span>Open Food Facts has no Nutri-Score for this product, so the nutrition part (half of the rating) can\'t be calculated.</span></div>'
+    : scoreRing(h.score);
+  const nut = nutrientFlags(p);
+  return '<div class="health">' +
+    '<div class="health__top">' + head + '<div class="health__tags">' + ns + nova + (h.organic ? '<span class="pill ok" title="Shown for information; not scored">Organic</span>' : '') + (h.capped ? '<span class="pill bad">Capped at ' + RATING_CAP + ': high-risk additive</span>' : '') + '</div></div>' +
+    (nut ? '<ul class="nutlist">' + nut + '</ul>' : '') +
+    '<div class="health__adds"><h5>Additives <span>' + h.adds.length + '</span></h5>' + addList + '</div>' +
+    (h.score != null ? '<ul class="parts">' + part("Nutrition", "50%", h.N, "Nutri-Score " + h.grade.toUpperCase()) + part("Processing", "25%", h.P, h.nova ? "NOVA " + h.nova : "not recorded (weight shared)") + part("Additives", "25%", h.A, h.adds.length ? h.adds.length + " listed" : "none listed") + '</ul>' : '') +
+    '<details class="howscore"><summary>How the Ledger health rating works</summary>' +
+      '<p>Our own rating, built from published standards and weighted by how strong the peer-reviewed evidence is:</p>' +
+      '<ul><li><b>Nutrition 50%</b>: Nutri-Score A=100, B=75, C=50, D=25, E=0. It is the EU front-of-pack standard, derived from the UK FSA nutrient profiling model, and in the EPIC cohort of 471,495 adults a diet of lower Nutri-Score quality predicted higher cancer risk. ' + srcLinks(["nutriscore","epic"]) + '</li>' +
+      '<li><b>Processing 25%</b>: NOVA 1=100, 2=80, 3=60, 4 (ultra-processed)=0. An umbrella review of 45 meta-analyses (about 10 million people) linked ultra-processed food to 32 health outcomes, and an NIH randomised trial found ultra-processed diets led people to eat about 500 kcal a day more. ' + srcLinks(["monteiro","bmjUpf","hall"]) + '</li>' +
+      '<li><b>Additives 25%</b>: start at 100, minus 40 for each high-risk, 20 moderate and 8 limited additive. Levels come only from regulators (EFSA, EU law, US FDA) and IARC, and each additive shows its source. A high-risk additive also caps the rating at ' + RATING_CAP + '.</li>' +
+      '<li><b>Organic 0%</b>: shown, not scored. A systematic review found lower pesticide residues but no clear nutritional or health advantage. ' + srcLinks(["organic"]) + '</li></ul>' +
+      '<p>Sugar, salt and fat levels use the UK front-of-pack traffic-light thresholds per 100 g. ' + srcLinks(["fop"]) + '</p>' +
+      '<p>80+ Excellent · 60–79 Good · 40–59 Fair · 20–39 Limit · under 20 Poor. Calculated from Open Food Facts data. It rates the product, not your whole diet: amount and frequency matter, and it is not medical advice.</p></details>' +
+    '</div>';
+}
+/* additive names for the list */
+const ADD_NAMES = {E100:"Curcumin",E101:"Riboflavin",E102:"Tartrazine",E104:"Quinoline yellow",E110:"Sunset yellow",E120:"Carmine",E122:"Carmoisine",E123:"Amaranth",E124:"Ponceau 4R",E127:"Erythrosine",E128:"Red 2G",E129:"Allura red",E131:"Patent blue",E132:"Indigotine",E133:"Brilliant blue",E140:"Chlorophylls",E141:"Copper chlorophylls",E150A:"Plain caramel",E150B:"Caustic sulphite caramel",E150C:"Ammonia caramel",E150D:"Sulphite ammonia caramel",E160A:"Carotenes",E160B:"Annatto",E160C:"Paprika extract",E162:"Beetroot red",E163:"Anthocyanins",E170:"Calcium carbonate",E171:"Titanium dioxide",E172:"Iron oxides",E200:"Sorbic acid",E202:"Potassium sorbate",E210:"Benzoic acid",E211:"Sodium benzoate",E212:"Potassium benzoate",E220:"Sulphur dioxide",E223:"Sodium metabisulphite",E224:"Potassium metabisulphite",E250:"Sodium nitrite",E251:"Sodium nitrate",E252:"Potassium nitrate",E260:"Acetic acid",E270:"Lactic acid",E290:"Carbon dioxide",E296:"Malic acid",E300:"Ascorbic acid",E301:"Sodium ascorbate",E306:"Tocopherols",E307:"Alpha-tocopherol",E316:"Sodium erythorbate",E319:"TBHQ",E320:"BHA",E321:"BHT",E322:"Lecithins",E322I:"Lecithin",E325:"Sodium lactate",E330:"Citric acid",E331:"Sodium citrates",E332:"Potassium citrates",E333:"Calcium citrates",E334:"Tartaric acid",E338:"Phosphoric acid",E339:"Sodium phosphates",E340:"Potassium phosphates",E341:"Calcium phosphates",E400:"Alginic acid",E401:"Sodium alginate",E406:"Agar",E407:"Carrageenan",E410:"Locust bean gum",E412:"Guar gum",E414:"Gum arabic",E415:"Xanthan gum",E418:"Gellan gum",E420:"Sorbitol",E421:"Mannitol",E422:"Glycerol",E440:"Pectins",E450:"Diphosphates",E451:"Triphosphates",E452:"Polyphosphates",E460:"Cellulose",E461:"Methyl cellulose",E464:"Hydroxypropyl methyl cellulose",E466:"Carboxymethyl cellulose",E471:"Mono- and diglycerides of fatty acids",E472E:"DATEM",E476:"Polyglycerol polyricinoleate",E481:"Sodium stearoyl lactylate",E500:"Sodium carbonates",E501:"Potassium carbonates",E503:"Ammonium carbonates",E508:"Potassium chloride",E509:"Calcium chloride",E516:"Calcium sulphate",E551:"Silicon dioxide",E621:"Monosodium glutamate",E627:"Disodium guanylate",E631:"Disodium inosinate",E635:"Disodium ribonucleotides",E901:"Beeswax",E903:"Carnauba wax",E904:"Shellac",E920:"L-cysteine",E950:"Acesulfame K",E951:"Aspartame",E952:"Cyclamate",E953:"Isomalt",E954:"Saccharin",E955:"Sucralose",E960:"Steviol glycosides",E965:"Maltitol",E967:"Xylitol",E968:"Erythritol",E1105:"Lysozyme",E1400:"Dextrin",E1404:"Oxidised starch",E1412:"Distarch phosphate",E1414:"Acetylated distarch phosphate",E1420:"Acetylated starch",E1422:"Acetylated distarch adipate",E1442:"Hydroxypropyl distarch phosphate",E1450:"Starch sodium octenyl succinate",E1520:"Propylene glycol"};
+const addName = c => ADD_NAMES[c] || ADD_NAMES[c.replace(/[A-Z]+$/, "")] || "";
+
+/* ---- allergen panel for a product: declared tags + ingredient scan */
+function productAllergens(p, text){
+  const scan = allergenScan(text || "");
+  const tagsToIds = list => (list || []).map(t => ALG.find(a => a.off.includes(t))).filter(Boolean).map(a => a.id);
+  const contains = new Set(tagsToIds(p && p.allergens_tags).concat(Object.keys(scan.contains)));
+  const may = new Set(tagsToIds(p && p.traces_tags).concat(Object.keys(scan.may)).filter(id => !contains.has(id)));
+  return {contains:[...contains], may:[...may], words:scan};
+}
+function glutenStatus(p, al){
+  const labels = (p && p.labels_tags) || [];
+  if(labels.some(l => /no-gluten|gluten-free|sans-gluten|crossed-grain/.test(l))) return {k:"yes", t:"Labelled gluten-free"};
+  if(al.contains.includes("gluten")) return {k:"no", t:"Contains gluten"};
+  if(al.may.includes("gluten")) return {k:"maybe", t:"May contain gluten"};
+  return {k:"open", t:"No gluten ingredient listed"};
+}
+function allergenPanel(al, gs, hasText){
+  const mine = myAlg();
+  const chip = (id, kind) => '<span class="achip ' + kind + (mine.has(id) ? " mine" : "") + '" title="' + esc(ALG_BY[id].note || "") + '">' + esc(ALG_BY[id].name) + '</span>';
+  const hitMine = al.contains.filter(id => mine.has(id)), mayMine = al.may.filter(id => mine.has(id));
+  const alert = hitMine.length ? '<div class="aalert bad"><b>Contains your allergen:</b> ' + esc(hitMine.map(id => ALG_BY[id].name).join(", ")) + '</div>'
+    : mayMine.length ? '<div class="aalert warn"><b>May contain your allergen:</b> ' + esc(mayMine.map(id => ALG_BY[id].name).join(", ")) + ' (shared equipment or traces)</div>' : "";
+  return '<div class="allergens">' + alert +
+    '<div class="arow"><span class="alab">Gluten</span><span class="gfbadge gf-' + gs.k + '">' + esc(gs.t) + '</span>' + (gs.k === "open" ? '<span class="note-sm">Not certified. Look for a gluten-free label if you have coeliac disease.</span>' : '') + '</div>' +
+    '<div class="arow"><span class="alab">Allergens</span>' + (al.contains.length ? al.contains.map(id => chip(id, "c")).join("") : '<span class="note-sm">' + (hasText ? "None of the 14 major allergens found in the listed ingredients." : "No ingredient list to check.") + '</span>') + '</div>' +
+    (al.may.length ? '<div class="arow"><span class="alab">May contain</span>' + al.may.map(id => chip(id, "m")).join("") + '</div>' : '') +
+    '</div>';
+}
+
+/* ---- scan history (this browser only) */
+const HIST_KEY = "il-hist-v1";
+function histGet(){ try{ return JSON.parse(store.get(HIST_KEY) || "[]"); }catch(_){ return []; } }
+function histAdd(p, base){
+  if(!p || !p.code) return;
+  const h = healthScore(p);
+  const txt = p.ingredients_text_en || p.ingredients_text || "";
+  const k = txt ? (analyze(txt).worst || "vegan") : null;
+  const item = {code:p.code, n:p.product_name || p.product_name_en || "", b:p.brands || "", img:p.image_front_small_url || "", s:h.score, k, t:Date.now(), base};
+  const list = [item].concat(histGet().filter(x => x.code !== p.code)).slice(0, 24);
+  store.set(HIST_KEY, JSON.stringify(list));
+  renderHistory();
+}
+function renderHistory(){
+  const box = document.getElementById("history"); if(!box) return;
+  const list = histGet();
+  if(!list.length){ box.hidden = true; return; }
+  box.hidden = false;
+  box.querySelector(".histlist").innerHTML = list.slice(0, 12).map(x => {
+    const lab = x.s == null ? ["–","s-none"] : SCORE_LABEL(x.s);
+    return '<button class="hist" type="button" data-hist="' + esc(x.code) + '">' + (x.img ? '<img src="' + esc(x.img) + '" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">' : '<span class="ph"></span>') +
+      '<span class="hist__t"><b>' + esc(x.n || x.code) + '</b><small>' + (x.k ? '<span class="hk k-' + x.k + '">' + esc(K[x.k].name) + '</span>' : esc(x.b || "No ingredient list")) + '</small></span>' + (x.s == null ? '' : '<span class="minis ' + lab[1] + '" title="Nutrition &amp; additives score">' + x.s + '</span>') + '</button>';
+  }).join("");
+}
+
+/* ---- healthier alternatives (Open Food Facts, same category; your diet, allergens and gluten choice respected) */
+async function findAlternatives(code, btn){
+  const box = document.getElementById("alt-" + code); if(!box) return;
+  const p = (state.offCache || {})[code]; if(!p) return;
+  btn.disabled = true;
+  box.innerHTML = '<div class="note-sm"><span class="spinner"></span> Looking for better-rated products in the same category…</div>';
+  const cats = (p.categories_tags || []).filter(c => /^en:/.test(c)).slice(-3).reverse();
+  const mine = myAlg(), mineScore = healthScore(p).score;
+  const fields = "code,product_name,product_name_en,brands,image_front_small_url,nutriscore_grade,nova_group,additives_tags,labels_tags,allergens_tags,traces_tags,ingredients_analysis_tags,ingredients_text,ingredients_text_en";
+  let picks = [];
+  for(const c of cats){
+    try{
+      const j = await getJSON("https://world.openfoodfacts.org/api/v2/search?categories_tags=" + encodeURIComponent(c) + "&nutrition_grades_tags=a|b&sort_by=unique_scans_n&page_size=40&fields=" + fields, null, {timeout:15000});
+      picks = (j.products || []).filter(x => x.code !== code && (x.product_name || x.product_name_en)).map(x => ({x, h:healthScore(x)}))
+        .filter(o => o.h.score != null && o.h.score >= 60 && !o.h.capped && (mineScore == null || o.h.score > mineScore))
+        .filter(o => { const t = o.x.ingredients_analysis_tags || [];
+          if(state.profile === "vegan") return t.includes("en:vegan");
+          if(t.includes("en:non-vegetarian") || t.includes("en:maybe-vegetarian")) return false;
+          const txt = o.x.ingredients_text_en || o.x.ingredients_text || "";
+          const a = txt ? analyze(txt) : null; return !a || !a.hits.some(e => e.k === "nonveg" || (e.k === "egg" && state.profile !== "ovo")); })
+        .filter(o => { const al = productAllergens(o.x, o.x.ingredients_text_en || o.x.ingredients_text); return !al.contains.concat(al.may).some(id => mine.has(id)); })
+        .sort((a, b) => b.h.score - a.h.score);
+      if(picks.length >= 2) break;
+    }catch(_){ }
+  }
+  btn.disabled = false;
+  if(!picks.length){ box.innerHTML = '<div class="note-sm">No better-rated alternative that fits your diet' + (mine.size ? " and allergens" : "") + ' was found in Open Food Facts for this category.</div>'; return; }
+  box.innerHTML = '<div class="alts">' + picks.slice(0, 6).map(o => { const [lab, cls] = SCORE_LABEL(o.h.score);
+    return '<button class="altp" type="button" data-try-code="' + esc(o.x.code) + '">' + (o.x.image_front_small_url ? '<img src="' + esc(o.x.image_front_small_url) + '" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">' : '<span class="ph"></span>') +
+      '<span class="altp__t"><b>' + esc(o.x.product_name || o.x.product_name_en) + '</b><small>' + esc(o.x.brands || "") + '</small></span><span class="minis ' + cls + '">' + o.h.score + '</span></button>'; }).join("") +
+    '</div><p class="note-sm" style="margin:6px 0 0">Same category, rated Good or better, no high-risk additive, and checked against your diet' + (mine.size ? ", allergens" : "") + '. Crowd-sourced data: check the pack.</p>';
+}
+
+/* ====================================================================== MEDICINES: evidence-based side effects
+   Side effects come only from the official, regulator-approved label (FDA via openFDA / DailyMed).
+   Those label sections are built from clinical-trial data and post-marketing reports reviewed by the FDA.
+   Component (excipient) warnings come only from the European Commission/EMA excipient guideline, which fixes the
+   wording every EU leaflet must carry, plus FDA labelling rules and CDC vaccine guidance. Nothing here comes from forums or single studies. */
+const EMA_EXC = ["EMA/European Commission: excipients in the label and package leaflet","https://www.ema.europa.eu/en/annex-european-commission-guideline-excipients-labelling-package-leaflet-medicinal-products-human-use"];
+const CFR_Y5 = ["FDA 21 CFR 201.20 (FD&C Yellow No. 5 warning)","https://www.ecfr.gov/current/title-21/chapter-I/subchapter-C/part-201/subpart-B/section-201.20"];
+const CFR_SULF = ["FDA 21 CFR 201.22 (sulfite warning)","https://www.ecfr.gov/current/title-21/chapter-I/subchapter-C/part-201/subpart-B/section-201.22"];
+const CDC_FLU_EGG = ["CDC/ACIP influenza recommendations (egg allergy)","https://www.cdc.gov/flu/hcp/vax-summary/acip-recommendations.html"];
+const CDC_CONTRA = ["Immunize.org: contraindications and precautions (CDC/ACIP)","https://www.immunize.org/ask-experts/topic/contraindications-precautions/"];
+const EXCIPIENTS = [
+  {rx:/\blactose\b/, n:"Lactose", t:"People with rare hereditary galactose intolerance, total lactase deficiency or glucose-galactose malabsorption should not take it. The small amount in a tablet rarely matters for ordinary lactose intolerance; pharmaceutical lactose can carry traces of milk protein.", s:[EMA_EXC]},
+  {rx:/\bwheat (starch|germ oil)\b/, n:"Wheat starch", t:"Contains only trace gluten and is considered suitable for people with coeliac disease. People with wheat allergy (different from coeliac disease) should not take it.", s:[EMA_EXC], alg:"gluten"},
+  {rx:/\baspartame\b|\bphenylalanine\b/, n:"Aspartame (phenylalanine)", t:"A source of phenylalanine. May be harmful for people with phenylketonuria (PKU).", s:[EMA_EXC]},
+  {rx:/\b(sorbitol|fructose|sucrose|invert sugar|maltitol|isomalt)\b/, n:"Sorbitol, fructose or sucrose", t:"People with hereditary fructose intolerance should not take it. Sucrose also matters for glucose-galactose malabsorption or sucrase-isomaltase insufficiency. Larger amounts of sorbitol can have a laxative effect.", s:[EMA_EXC]},
+  {rx:/\b(peanut|arachis) oil\b/, n:"Peanut (arachis) oil", t:"Do not use if you are allergic to peanut or soya.", s:[EMA_EXC], alg:"peanuts"},
+  {rx:/\b(soya|soy|soybean) (oil|lecithin)\b/, n:"Soya oil or lecithin", t:"Do not use if you are allergic to peanut or soya.", s:[EMA_EXC], alg:"soybeans"},
+  {rx:/\bsesame oil\b/, n:"Sesame oil", t:"May rarely cause severe allergic reactions.", s:[EMA_EXC], alg:"sesame"},
+  {rx:/\b(tartrazine|fd ?& ?c yellow (no\.? )?5|e ?102|sunset yellow|fd ?& ?c yellow (no\.? )?6|e ?110|ponceau|e ?124|carmoisine|azorubine|e ?122|allura red|fd ?& ?c red (no\.? )?40|e ?129|brilliant black|e ?151)\b/, n:"Azo colour (e.g. tartrazine)", t:"May cause allergic reactions. US labels must warn that FD&C Yellow No. 5 can cause allergic-type reactions, including asthma, especially in people sensitive to aspirin.", s:[EMA_EXC, CFR_Y5]},
+  {rx:/(meta)?bisul(ph|f)ite|\bsul(ph|f)ites?\b|sul(ph|f)ur dioxide/, n:"Sulphites", t:"May rarely cause severe hypersensitivity reactions and bronchospasm, more often in people with asthma.", s:[EMA_EXC, CFR_SULF], alg:"sulphites"},
+  {rx:/\bbenzyl alcohol\b/, n:"Benzyl alcohol", t:"Must not be given to premature babies or newborns unless the doctor says so; it has been linked to fatal “gasping syndrome” in neonates. It can cause allergic reactions.", s:[EMA_EXC]},
+  {rx:/\bpropylene glycol\b/, n:"Propylene glycol", t:"Above set amounts it needs medical supervision in babies under 4 weeks, children under 5, pregnancy and in kidney or liver disease.", s:[EMA_EXC]},
+  {rx:/\bethanol\b|(?<!(benzyl|cetostearyl|cetyl|stearyl|polyvinyl|wool|isopropyl) )\b(dehydrated )?alcohol\b(?! ?free)/, n:"Ethanol (alcohol)", t:"The leaflet must state the amount. It matters for children, pregnancy, liver disease, epilepsy and people avoiding alcohol.", s:[EMA_EXC]},
+  {rx:/\bpolysorbate/, n:"Polysorbates", t:"May cause allergic reactions.", s:[EMA_EXC]},
+  {rx:/\b(polyethylene glycol|macrogol|peg ?\d{3,5}|peg-)/, n:"Polyethylene glycol (PEG)", t:"Very rarely causes severe allergic reactions. A severe allergy to PEG is a contraindication to mRNA COVID-19 vaccines.", s:[CDC_CONTRA]},
+  {rx:/\b(methyl|ethyl|propyl|butyl) ?(paraben|parahydroxybenzoate|hydroxybenzoate)|\bparabens?\b|e ?21[4-9]\b/, n:"Parabens", t:"May cause allergic reactions (possibly delayed).", s:[EMA_EXC]},
+  {rx:/\b(polyoxyl|polyoxyethylated|macrogolglycerol) ?\d* ?(castor|ricinoleate)|cremophor|kolliphor el/, n:"Polyoxyl castor oil", t:"May cause severe allergic reactions.", s:[EMA_EXC]},
+  {rx:/\b(thiomersal|thimerosal)\b/, n:"Thiomersal", t:"May cause allergic (skin) reactions.", s:[EMA_EXC]},
+  {rx:/\bbenzalkonium\b/, n:"Benzalkonium chloride", t:"In eye drops it can irritate the eye and discolour soft contact lenses; remove lenses before use. In inhalers it can cause wheezing.", s:[EMA_EXC]},
+  {rx:/\b(cetostearyl|cetyl|stearyl) alcohol\b/, n:"Cetostearyl alcohol", t:"May cause local skin reactions such as contact dermatitis.", s:[EMA_EXC]},
+  {rx:/\b(lanolin|wool fat|wool alcohols?)\b/, n:"Lanolin (wool fat)", t:"May cause local skin reactions such as contact dermatitis.", s:[EMA_EXC]},
+  {rx:/\b(butylated hydroxytoluene|bht|e ?321|butylated hydroxyanisole|bha|e ?320)\b/, n:"BHT or BHA", t:"In skin products: may cause local skin reactions or irritate eyes and mucous membranes.", s:[EMA_EXC]},
+  {rx:/\b(egg|ovalbumin|chick embryo|embryonated (chicken|hen'?s) eggs?)\b/, n:"Egg protein", t:"For flu vaccines, ACIP advises that people with any egg allergy can receive any flu vaccine suitable for their age, with no extra precautions. Yellow fever vaccine is different: severe egg allergy is a contraindication.", s:[CDC_FLU_EGG, CDC_CONTRA], alg:"eggs"},
+  {rx:/\bgelatin|\bgelatine/, n:"Gelatin", t:"A severe allergic reaction to gelatin is a contraindication to gelatin-containing vaccines such as MMR, varicella and yellow fever. Gelatin-free options exist for some (e.g. Priorix).", s:[CDC_CONTRA]},
+  {rx:/\b(neomycin|gentamicin|polymyxin|streptomycin|kanamycin)\b/, n:"Trace antibiotics", t:"A severe (anaphylactic) allergy to the listed antibiotic is a contraindication. Contact dermatitis to neomycin is not.", s:[CDC_CONTRA]},
+  {rx:/\b(natural rubber|latex)\b/, n:"Natural rubber latex", t:"Vial stoppers or syringe parts made of latex can cause allergic reactions in latex-allergic people.", s:[CDC_CONTRA]}
+];
+function excipientNotes(text){
+  const t = " " + norm(text || "") + " ";
+  return EXCIPIENTS.filter(x => x.rx.test(t));
+}
+function excipientHTML(text){
+  const list = excipientNotes(text); if(!list.length) return "";
+  const mine = myAlg();
+  return '<div class="excip"><h5>Component warnings <span>' + list.length + '</span></h5><ul>' + list.map(x =>
+    '<li' + (x.alg && mine.has(x.alg) ? ' class="mine"' : '') + '><b>' + esc(x.n) + '</b><p>' + esc(x.t) + '</p><p class="srcs">Source: ' + x.s.map(s => '<a target="_blank" rel="noopener" href="' + s[1] + '">' + esc(s[0]) + ' ↗</a>').join(" · ") + '</p></li>').join("") +
+    '</ul></div>';
+}
+const clip = (s, n) => { s = String(s || "").replace(/\s+/g, " ").trim(); return s.length > n ? s.slice(0, n).replace(/\s\S*$/, "") + "…" : s; };
+function sideEffectsHTML(r, link){
+  const first = k => (r[k] && r[k][0]) ? String(r[k][0]) : "";
+  const boxed = first("boxed_warning");
+  const adv = first("adverse_reactions");
+  const contra = first("contraindications");
+  const warn = first("warnings_and_cautions") || first("warnings");
+  if(!boxed && !adv && !contra && !warn) return "";
+  const strip = s => s.replace(/^\s*(\d+(\.\d+)?\s*)?(boxed warning|warning|adverse reactions|contraindications|warnings( and precautions)?)\s*[:.]?\s*/i, "");
+  const common = ((strip(adv).match(/[^.]*most common[^.]*(?:\([^)]*\)[^.]*)*\./i) || [])[0] || "").replace(/^\s*\d+(\.\d+)*\s+[A-Z][A-Z &]+\s+/, "").trim();
+  return '<div class="sidefx">' +
+    '<h5>Side effects <span>from the FDA-approved label</span></h5>' +
+    (boxed ? '<div class="boxed"><b>Boxed warning</b><p>' + esc(clip(strip(boxed), 420)) + '</p></div>' : '') +
+    (common ? '<p class="common"><b>Most common:</b> ' + esc(clip(common, 420)) + '</p>' : '') +
+    (adv ? '<details><summary>Adverse reactions (label section)</summary><p>' + esc(clip(strip(adv), 1400)) + '</p></details>' : '') +
+    (contra ? '<details><summary>Who should not take it (contraindications)</summary><p>' + esc(clip(strip(contra), 900)) + '</p></details>' : '') +
+    (warn ? '<details><summary>Warnings and precautions</summary><p>' + esc(clip(strip(warn), 1200)) + '</p></details>' : '') +
+    '<p class="srcs">Taken word for word from the official label, which reports clinical-trial and post-marketing data reviewed by the FDA. ' + (link ? '<a target="_blank" rel="noopener" href="' + esc(link) + '">Full label on DailyMed ↗</a>' : '') + ' Never stop a prescribed medicine without talking to your doctor or pharmacist.</p>' +
+    '</div>';
+}
+
+DATA.forEach(prepAllergens);
+
 /* ---------- product card (Open Food Facts / Beauty / medicines) ---------- */
 const OFF_TAG = {yes:"Open Food Facts: ", no:"", maybe:""};
 function offTag(p, kind){
@@ -1340,7 +2244,25 @@ function offTag(p, kind){
   if(kind === "vegan") return t.includes("en:non-vegan") ? "no" : t.includes("en:maybe-vegan") ? "maybe" : t.includes("en:vegan") ? "yes" : null;
   return t.includes("en:non-vegetarian") ? "no" : t.includes("en:maybe-vegetarian") ? "maybe" : t.includes("en:vegetarian") ? "yes" : null;
 }
-const PH = '<div class="ph">no photo</div>';
+const PH = '<div class="ph" aria-hidden="true"></div>';
+/* links to the photographed nutrition and ingredient labels (Open Food Facts), or to the nutrition table when there is no photo */
+function labelLinks(p, base){
+  if(!p) return "";
+  const nm = p.nutriments || {};
+  const hasNut = Object.keys(nm).some(k => /_100g$/.test(k));
+  const rec = p.code ? (base || "https://world.openfoodfacts.org") + "/product/" + encodeURIComponent(p.code) : "";
+  const one = (url, thumb, label) => '<a class="labellink" target="_blank" rel="noopener" href="' + esc(url) + '">' + (thumb ? '<img src="' + esc(thumb) + '" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">' : '') + '<span>' + label + ' ↗</span></a>';
+  const bits = [];
+  if(p.image_nutrition_url) bits.push(one(p.image_nutrition_url, p.image_nutrition_small_url, "Nutrition label"));
+  else if(hasNut && rec) bits.push(one(rec + "#panel_nutrition_facts_table", "", "Nutrition facts table"));
+  if(p.image_ingredients_url) bits.push(one(p.image_ingredients_url, p.image_ingredients_small_url, "Ingredients label"));
+  return bits.length ? '<div class="labellinks">' + bits.join("") + '</div>' : "";
+}
+function healthWrap(p){
+  const h = healthScore(p);
+  const sum = h.score == null ? '<span class="minis s-none">–</span>' : '<span class="minis ' + SCORE_LABEL(h.score)[1] + '">' + h.score + '</span>';
+  return '<details class="healthwrap"><summary>' + sum + '<span><b>Nutrition, processing &amp; additives</b><small>' + (h.score == null ? "No Nutri-Score recorded" : SCORE_LABEL(h.score)[0] + " · Ledger health rating") + (h.adds.length ? " · " + h.adds.length + " additive" + (h.adds.length === 1 ? "" : "s") : "") + (h.adds.some(a => a.level === "high" || a.level === "moderate") ? " · flagged" : "") + '</small></span></summary>' + healthPanel(p) + '</details>';
+}
 function productCard(o){
   const a = analyze(o.text || "");
   const k = a.worst || (o.text ? "vegan" : null);
@@ -1362,17 +2284,19 @@ function productCard(o){
     '<div class="product__body"><h4>' + esc(o.title || "Unnamed product") + '</h4>' +
     '<div class="brandline">' + esc(o.sub || "") + '</div>' +
     '<div class="verdictrow">' + head + (a.hits.length ? '<span class="fit ' + a.fit + '" style="margin:0">' + FIT_ICON[a.fit] + FIT_TEXT[a.fit] + '</span>' : '') + offTxt(offV, "vegan") + offTxt(offG, "vegetarian") + (o.badges || "") + '</div>' +
-    (o.text ? GUIDANCE_NOTE : '') + '<p class="evidence-note"><b>Evidence:</b> ' + esc(evidence) + '</p>' + unknownNote +
+    '<p class="evidence-note"><b>Evidence:</b> ' + esc(evidence) + '</p>' + unknownNote +
+    ((o.text || o.p) && !o.noAllergens ? (al => allergenPanel(al, glutenStatus(o.p, al), !!o.text))(productAllergens(o.p, o.text)) : '') +
     (o.text ? '<div class="ichips">' + a.chips + '</div>' : '') +
     (flagged.length ? '<div class="why">' + whyList(flagged) + '</div>' : '') +
+    (o.med || '') + (o.health ? healthWrap(o.p) : '') + (o.labels || '') +
     (o.text ? '<details class="raw"><summary>Show original ingredient text</summary><div class="rawtext">' + esc(o.text) + '</div></details>' : '') +
     (o.note ? '<p class="note-sm" style="margin:8px 0 0">' + o.note + '</p>' : '') + (o.extra || '') +
     (o.link ? '<a class="srclink" target="_blank" rel="noopener" href="' + esc(o.link) + '">' + esc(o.linkText || "Open source record") + ' ↗</a>' : '') +
     '</div></article>';
 }
 
-const OFF_FIELDS = "code,product_name,product_name_en,brands,quantity,ingredients_text,ingredients_text_en,ingredients_analysis_tags,image_front_small_url,labels_tags,ingredients,additives_tags,allergens_tags,categories_tags";
-const OFF_FIELDS_SEARCH = "code,product_name,product_name_en,brands,quantity,ingredients_text,ingredients_text_en,ingredients_analysis_tags,image_front_small_url,labels_tags,additives_tags,allergens_tags,categories_tags";
+const OFF_FIELDS = "code,product_name,product_name_en,brands,quantity,ingredients_text,ingredients_text_en,ingredients_analysis_tags,image_front_small_url,labels_tags,ingredients,additives_tags,allergens_tags,traces_tags,categories_tags,nutriscore_grade,nova_group,nutrient_levels,nutriments,image_nutrition_url,image_nutrition_small_url,image_ingredients_url,image_ingredients_small_url";
+const OFF_FIELDS_SEARCH = "code,product_name,product_name_en,brands,quantity,ingredients_text,ingredients_text_en,ingredients_analysis_tags,image_front_small_url,labels_tags,additives_tags,allergens_tags,traces_tags,categories_tags,nutriscore_grade,nova_group,nutrient_levels,nutriments,image_nutrition_url,image_nutrition_small_url,image_ingredients_url,image_ingredients_small_url";
 const tagWord = t => String(t || "").replace(/^[a-z]{2}:/, "").replace(/-/g, " ");
 function offIngredientFlags(list, out){
   out = out || {noVeg:[], noVegan:[], maybe:[]};
@@ -1406,8 +2330,9 @@ function offToCard(p, base){
   if(fl.noVegan.length) notes.push("Not vegan per Open Food Facts: " + esc([...new Set(fl.noVegan)].slice(0,6).join(", ")) + ".");
   if(pseudo) notes.push("No ingredient list recorded — this verdict uses the product's allergen, additive and category tags only.");
   const name = p.product_name || p.product_name_en || "";
+  state.offCache = state.offCache || {}; if(p.code) state.offCache[p.code] = p;
   return productCard({
-    p, title: name, text: real || pseudo,
+    p, health: true, title: name, text: real || pseudo,
     evidence: real
       ? "Open Food Facts ingredient text checked against Ingredient Ledger’s curated reference; the record may be incomplete or out of date."
       : pseudo
@@ -1416,7 +2341,8 @@ function offToCard(p, base){
     sub: [p.brands, p.quantity, p.code].filter(Boolean).join(" · ") || "brand not listed", img: p.image_front_small_url,
     badges: lab ? '<span class="badge plain">Pack label: ' + lab + '</span>' : "",
     note: notes.join(" "),
-    extra: '<div class="buyrow">' + '<button type="button" data-nearprod="' + esc(p.code || "") + '" data-nearname="' + esc([p.brands, name].filter(Boolean).join(" ")) + '">Find near me</button>' + (p.code ? '<button type="button" data-seen="' + esc(p.code) + '">Where it\'s been seen in stores</button>' : '') + BUY_LINKS([p.brands, name].filter(Boolean).join(" ")) + '</div><div class="seenlist" id="seen-' + esc(p.code || "") + '"></div>',
+    labels: labelLinks(p, base),
+    extra: (p.code && /openfoodfacts/.test(base) ? '<div class="altwrap"><button type="button" class="btn sm ghost" data-altfor="' + esc(p.code) + '">Better alternatives for your diet</button><div id="alt-' + esc(p.code) + '"></div></div>' : '') + '<div class="buyrow">' + '<button type="button" data-nearprod="' + esc(p.code || "") + '" data-nearname="' + esc([p.brands, name].filter(Boolean).join(" ")) + '">Find near me</button>' + (p.code ? '<button type="button" data-seen="' + esc(p.code) + '">Where it\'s been seen in stores</button>' : '') + BUY_LINKS([p.brands, name].filter(Boolean).join(" ")) + '</div><div class="seenlist" id="seen-' + esc(p.code || "") + '"></div>',
     link: base + "/product/" + encodeURIComponent(p.code || ""), linkText: "Open full record"
   });
 }
@@ -1444,7 +2370,7 @@ async function liveFood(id, q, barcode, sig, seq, base){
         try{ j = await getJSON(b + "/api/v2/product/" + encodeURIComponent(barcode) + ".json?fields=" + OFF_FIELDS, sig); }catch(e){ if(e.status !== 404) { if(b === base) throw e; } }
         if(sig.aborted || seq !== state.liveSeq) return;
         if(j && j.product && j.status !== 0){
-          setSec(id, b === base ? "1 product" : "found in " + b.replace(/^https:\/\/world\./, ""), offToCard(j.product, b), seq); return;
+          setSec(id, b === base ? "1 product" : "found in " + b.replace(/^https:\/\/world\./, ""), offToCard(j.product, b), seq); histAdd(j.product, b); return;
         }
       }
       setSec(id, "not found", '<div class="msg">That barcode isn\'t in Open Food Facts or its sister databases yet. They are crowd-sourced — try the product name, take a <button class="btn sm ghost" data-ocr>photo of the ingredient list</button>, or add it at <a target="_blank" rel="noopener" href="https://world.openfoodfacts.org/cgi/product.pl?type=add&code=' + esc(barcode) + '">openfoodfacts.org ↗</a>.</div>', seq); return;
@@ -1502,6 +2428,7 @@ async function liveMeds(q, sig, seq){
         title: name + (of.generic_name && of.generic_name[0] && of.generic_name[0] !== name ? " (" + of.generic_name[0].toLowerCase() + ")" : ""),
         sub: [of.manufacturer_name && of.manufacturer_name[0], of.product_type && of.product_type[0], (r.active_ingredient && r.active_ingredient[0] || "").slice(0, 80)].filter(Boolean).join(" · "),
         text, link: sid ? "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=" + sid : null, linkText: "Open official label on DailyMed",
+        med: sideEffectsHTML(r, sid ? "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=" + sid : null) + excipientHTML(text),
         note: text ? "Checked: the label's <b>inactive ingredients</b> (excipients) against the index. The active drug itself is not analysed." : "This label lists no inactive ingredients — open the official label."
       }));
     });
@@ -1530,7 +2457,7 @@ async function liveMeds(q, sig, seq){
         }catch(_){}
       }
       return productCard({ title: d.title || "DailyMed label", sub: "DailyMed · version " + (d.spl_version || "–") + " · " + (d.published_date || ""),
-        text, note: note || "Ingredient list couldn't be read automatically — open the official label (Section 11 “Description” lists excipients).",
+        text, med: excipientHTML(text) + (text ? '<p class="note-sm" style="margin:8px 0 0">Side effects: see sections 5 and 6 of the <a target="_blank" rel="noopener" href="https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=' + esc(d.setid) + '">official label ↗</a>.</p>' : ''), note: note || "Ingredient list couldn't be read automatically — open the official label (Section 11 “Description” lists excipients).",
         link: "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=" + d.setid, linkText: "Open official label on DailyMed" });
     }).join("");
   }
@@ -1694,7 +2621,7 @@ function usdaGenericCard(f){
     '<div class="brandline">Generic (unbranded) · ' + esc(f.foodCategory || "") + ' · ' + esc(f.dataType || "") + '</div>' +
     '<div class="verdictrow"><span class="badge k-' + c.k + '"><i></i>' + K[c.k].name + '</span><span class="fit ' + f2 + '" style="margin:0">' + FIT_ICON[f2] + FIT_TEXT[f2] + '</span></div>' +
     '<p class="note-sm" style="margin:0">' + esc(c.why) + '</p>' +
-    '<a class="srclink" target="_blank" rel="noopener" href="https://fdc.nal.usda.gov/food-details/' + f.fdcId + '/nutrients">Open USDA record ↗</a></div></article>';
+    '<a class="srclink" target="_blank" rel="noopener" href="https://fdc.nal.usda.gov/food-details/' + f.fdcId + '/nutrients">Nutrition facts (USDA) ↗</a></div></article>';
 }
 async function liveUSDA(q, barcode, sig, seq){
   try{
@@ -1712,7 +2639,7 @@ async function liveUSDA(q, barcode, sig, seq){
     if(gens.length) html += '<p class="subhead">Generic foods (unbranded)</p><div class="list">' + gens.map(usdaGenericCard).join("") + '</div>';
     if(foods.length) html += '<p class="subhead">Branded foods (US)</p><div class="list">' + foods.map(f => productCard({
       title: titleCase(f.description), sub: [titleCase(f.brandName || f.brandOwner), f.gtinUpc ? "UPC " + f.gtinUpc : "", f.marketCountry].filter(Boolean).join(" · "),
-      text: titleCase(f.ingredients), link: "https://fdc.nal.usda.gov/food-details/" + f.fdcId + "/nutrients", linkText: "Open USDA record",
+      text: titleCase(f.ingredients), link: "https://fdc.nal.usda.gov/food-details/" + f.fdcId + "/nutrients", linkText: "Nutrition facts (USDA)",
       extra: '<div class="buyrow"><button type="button" data-nearprod="" data-nearname="' + esc([f.brandName || f.brandOwner, titleCase(f.description)].filter(Boolean).join(" ")) + '">Find near me</button>' + BUY_LINKS([f.brandName || f.brandOwner, f.description].filter(Boolean).join(" ")) + '</div>'
     })).join("") + '</div>';
     setSec("usda", (foods.length + gens.length) + " foods", html, seq);
@@ -1836,7 +2763,9 @@ function runScan(text){
   const out = $("#scanout");
   if(!text){ out.innerHTML = '<div class="msg">Paste some text first — an ingredient list, menu or leaflet.</div>'; return; }
   const a = analyze(text);
+  const sal = productAllergens(null, text);
   out.innerHTML = banner(a) +
+    '<div class="panel" style="margin-bottom:16px"><h3>Gluten &amp; allergens</h3>' + allergenPanel(sal, glutenStatus(null, sal), true) + excipientHTML(text) + '</div>' +
     '<div class="panel"><h3>Every ingredient, colour-coded <span class="note-sm" style="font-weight:400">· ' + a.count + ' parts read · ' + a.hits.length + ' recognised</span></h3><div class="ichips">' + a.chips + '</div>' +
     '<p class="note-sm" style="margin:10px 0 0"><span class="badge k-vegan">vegan</span> <span class="badge k-veg">vegetarian</span> <span class="badge k-lacto">lacto-veg</span> <span class="badge k-check">check</span> <span class="badge k-egg">egg</span> <span class="badge k-nonveg">non-veg</span> <span class="badge k-none">unlisted = not in index</span></p></div>' +
     (a.unknown.length ? '<div class="unknownbox"><button class="btn ghost sm" id="taxbtn">Look up ' + a.unknown.length + ' unlisted ingredient' + (a.unknown.length === 1 ? "" : "s") + ' in Open Food Facts\' ingredient database</button><div id="taxout"></div></div>' : '') +
@@ -1881,7 +2810,7 @@ async function readPage(){
 
 /* ====================================================================== INDEX view */
 function buildIndexChips(){
-  const cnt = {}; DATA.forEach(e => cnt[e.c] = (cnt[e.c]||0) + 1);
+  const cnt = {}; DATA.forEach(e => { cnt[e.c] = (cnt[e.c]||0) + 1; if(e.gf === "yes") cnt.gf = (cnt.gf||0) + 1; });
   $("#catchips").innerHTML = CATS.map(([k,l]) => '<button class="chip" data-cat="' + k + '" aria-pressed="' + (k === state.cat) + '">' + l + '<small>' + (k === "all" ? DATA.length : cnt[k]||0) + '</small></button>').join("");
   const regions = [...new Set(DATA.filter(e => e.c === "rest").map(e => e.market || e.region))];
   $("#regionfilter").innerHTML = '<option value="all">All regions</option>' + regions.map(region => '<option value="' + esc(region) + '">' + esc(region) + '</option>').join("");
@@ -1900,7 +2829,7 @@ function renderIndex(){
     $("#regionfilter").value = "all";
   }
   const kf = state.kf === "alt" ? "all" : state.kf;
-  let rows = iq ? searchLocal(iq, {cat:state.cat, k:kf}) : DATA.filter(e => (state.cat === "all" || e.c === state.cat) && (kf === "all" || e.k === kf));
+  let rows = iq ? searchLocal(iq, {cat:state.cat, k:kf}) : DATA.filter(e => inCat(e, state.cat) && (kf === "all" || e.k === kf));
   if(isRestaurantCategory && state.region !== "all") rows = rows.filter(e => (e.market || e.region) === state.region);
   if(state.kf === "alt") rows = rows.filter(e => e.alt);
   const fitPriority = {ok:0, maybe:1, strict:1, no:2};
@@ -1971,7 +2900,7 @@ function addLiveEntries(list, persist){
   let n = 0;
   list.forEach(e => {
     if(!e || knownName(e.n)) return;
-    e.i = DATA.length; prepEntry(e); DATA.push(e); addScanTerms(e); n++;
+    e.i = DATA.length; prepEntry(e); prepAllergens(e); DATA.push(e); addScanTerms(e); n++;
   });
   if(n){
     SCAN.sort((a,b) => b.term.length - a.term.length);
@@ -2611,6 +3540,43 @@ $("#profile").addEventListener("change", e => {
 });
 function runScanKeepScroll(){ const y = window.scrollY; runScan($("#scantext").value); window.scrollTo(0, y); }
 
+/* ---------- My profile: diet first, then gluten and allergens ---------- */
+const DIET_SHORT = {lacto:"Lacto-vegetarian", ovo:"Lacto-ovo vegetarian", vegan:"Vegan"};
+function profileSummary(){
+  const bits = [DIET_SHORT[state.profile]];
+  if(state.noGluten) bits.push("gluten-free");
+  if(state.allergens.length) bits.push(state.allergens.length === 1 ? ALG_BY[state.allergens[0]].name.toLowerCase() + " allergy" : state.allergens.length + " allergens");
+  $("#profsum").textContent = bits.join(" · ");
+}
+function buildProfileUI(){
+  $$('input[name="diet"]').forEach(r => { r.checked = r.value === state.profile; });
+  $("#nogluten").checked = state.noGluten;
+  $("#algpick").innerHTML = ALG.filter(a => a.id !== "gluten").concat([ALG_BY.gluten]).map(a =>
+    '<label class="apick"><input type="checkbox" value="' + a.id + '"' + (state.allergens.includes(a.id) ? " checked" : "") + '><span>' + esc(a.id === "gluten" ? "Wheat & gluten cereals" : a.name) + '</span></label>').join("");
+  profileSummary();
+}
+function refreshAfterProfile(){
+  profileSummary();
+  if(state.q) runSearch(state.q);
+  if(state.view === "index") renderIndex();
+  if($("#scantext").value.trim() && $("#scanout").innerHTML.includes("vbanner")) runScanKeepScroll();
+}
+$("#profbtn").addEventListener("click", () => { buildProfileUI(); const d = $("#profdlg"); if(d.showModal) d.showModal(); else d.setAttribute("open", ""); });
+$("#profdlg").addEventListener("click", e => { if(e.target === e.currentTarget) e.currentTarget.close(); });
+$("#profdlg").addEventListener("change", e => {
+  const t = e.target;
+  if(t.name === "diet"){ const sel = $("#profile"); sel.value = t.value; sel.dispatchEvent(new Event("change")); profileSummary(); return; }
+  if(t.id === "nogluten"){ state.noGluten = t.checked; store.set("il-nogluten", t.checked ? "1" : "0"); refreshAfterProfile(); return; }
+  if(t.closest("#algpick")){ state.allergens = $$("#algpick input:checked").map(x => x.value); store.set("il-allergens", state.allergens.join(",")); refreshAfterProfile(); }
+});
+function updateSrcCount(){ const n = ["s-food","s-med","s-care","s-meal","s-usda","s-sp","s-wiki"].filter(id => $("#" + id).checked && !$("#" + id).disabled).length; $("#srccount").textContent = n + " on"; }
+$$(".srcrow input").forEach(i => i.addEventListener("change", updateSrcCount));
+$("#history").addEventListener("click", e => {
+  if(e.target.id === "histclear"){ store.set(HIST_KEY, "[]"); renderHistory(); return; }
+  const b = e.target.closest("[data-hist]"); if(!b) return;
+  $("#q").value = b.dataset.hist; $("#qclear").hidden = false; runSearch(b.dataset.hist, {immediate:true});
+});
+
 $("#q").addEventListener("input", e => { $("#qclear").hidden = !e.target.value; runSearchDeb(e.target.value); });
 $("#q").addEventListener("keydown", e => { if(e.key === "Enter"){ e.preventDefault(); runSearchDeb.cancel(); runSearch(e.target.value, {immediate:true}); e.target.blur(); } });
 $("#qclear").addEventListener("click", () => { $("#q").value = ""; runSearch(""); $("#q").focus(); });
@@ -2625,6 +3591,8 @@ $("#tiles").addEventListener("click", e => {
   buildIndexChips(); showView("index");
 });
 $("#results").addEventListener("click", e => {
+  const af = e.target.closest("[data-altfor]"); if(af){ findAlternatives(af.dataset.altfor, af); return; }
+  const tc = e.target.closest("[data-try-code]"); if(tc){ $("#q").value = tc.dataset.tryCode; $("#qclear").hidden = false; runSearch(tc.dataset.tryCode, {immediate:true}); window.scrollTo({top:0, behavior:"smooth"}); return; }
   const t = e.target;
   if(t.id === "seeall"){ state.cat = "all"; state.kf = "all"; iq = state.q; $("#iq").value = iq; state.limit = 40; buildIndexChips(); showView("index"); }
   if(t.id === "tosscan" || t.id === "tosscan2"){ $("#scantext").value = state.q; showView("scan"); runScan(state.q); }
@@ -2833,10 +3801,24 @@ if("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) window.a
 /* ====================================================================== init */
 refreshKeyUI(); checkServerSpoon();
 restoreLiveEntries();
+buildProfileUI(); renderHistory(); updateSrcCount();
+function buildSpecimens(){
+  const car = DATA.find(e => e.n === "E120 Carmine");
+  if(car) $("#spec-diet").innerHTML = card(car, []);
+  const sample = "Wheat flour, sugar, palm oil, whey powder, emulsifier (soya lecithin), raising agent, salt. May contain hazelnuts.";
+  const al = productAllergens(null, sample);
+  $("#spec-alg").innerHTML = '<p class="spec-text">' + esc(sample) + '</p>' + allergenPanel(al, glutenStatus(null, al), true);
+  $("#spec-rating").innerHTML = healthPanel({code:"example", nutriscore_grade:"c", nova_group:4, additives_tags:["en:e322","en:e471","en:e150d"], labels_tags:[], nutrient_levels:{sugars:"high", salt:"low", "saturated-fat":"moderate"}, nutriments:{"energy-kcal_100g":468, sugars_100g:24, salt_100g:0.6, "saturated-fat_100g":4.1}});
+}
+buildSpecimens();
+(() => { const top = document.querySelector(".top"); const on = () => top.classList.toggle("is-scrolled", window.scrollY > 4); on(); window.addEventListener("scroll", on, {passive:true}); })();
 buildLegend(); buildTiles(); buildIndexChips(); buildCuisines();
 updateSearchPlaceholder(); updateFilterHint();
 $("#total").textContent = DATA.length;
-$("#built").textContent = DATA.length + " entries · built " + new Date().toISOString().slice(0,10);
+$("#built").textContent = DATA.length + " entries · index reviewed " + new Date(INDEX_REVIEWED + "T12:00:00Z").toLocaleDateString("en-GB", {day:"numeric", month:"long", year:"numeric"});
+$$(".n-entries").forEach(x => { x.textContent = DATA.length; });
+$$(".n-swaps").forEach(x => { x.textContent = DATA.filter(e => e.alt).length; });
+$$(".n-gf").forEach(x => { x.textContent = DATA.filter(e => e.gf === "yes").length; });
 showView(location.hash.slice(1) || "search", {noHash:true, noScroll:true, noFocus:true});
 </script>
 </body>

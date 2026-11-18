@@ -2,7 +2,7 @@
 
 **Is it vegan, vegetarian, lacto-vegetarian or non-vegetarian?** Check any food, drink, ingredient, E-number, medicine or vaccine in seconds. You get the verdict and exactly how each ingredient is derived. The app also finds vegetarian restaurants and grocery stores anywhere in the world.
 
-A single static page: no accounts, no tracking, no server of its own. It works offline for the built-in index and calls free public databases straight from your browser.
+A single static page: no accounts, no analytics or ad trackers, no server of its own. (Web fonts load from Google Fonts; self-host them if you want zero third-party requests on page load.) It works offline for the built-in index and calls free public databases straight from your browser.
 
 ## The categories
 
@@ -16,9 +16,43 @@ A single static page: no accounts, no tracking, no server of its own. It works o
 
 **Was an animal killed?** Every entry answers this. If no animal is killed (milk, honey, wool wax, horse-serum antivenoms, vaccines made in cultured cell lines such as Flublok, Flucelvax and Shingrix, and mRNA vaccines), it is listed as **suitable for vegetarians**, with a disclaimer where the product still has an animal origin. Eggs are the one exception by this site's rule.
 
-**Alternatives:** 175+ entries list vegetarian or vegan swaps. Examples: agar or pectin for gelatine, beet red for carmine, microbial rennet cheeses, algal omega-3, lichen D3, HPMC capsules, levothyroxine instead of pig thyroid, egg-free flu vaccines, and Priorix instead of gelatine-containing MMR.
+**Alternatives:** 179 entries list vegetarian or vegan swaps. Examples: agar or pectin for gelatine, beet red for carmine, microbial rennet cheeses, algal omega-3, lichen D3, HPMC capsules, levothyroxine instead of pig thyroid, egg-free flu vaccines, and Priorix instead of gelatine-containing MMR.
 
 **Cheese is strict:** every cheese counts as non-vegetarian unless the label says microbial, vegetable or "suitable for vegetarians" rennet, because traditional rennet comes from slaughtered calves.
+
+## What comes first
+
+The **diet verdict** always comes first: vegan, vegetarian, lacto-vegetarian or non-vegetarian, with how each ingredient is made and whether an animal was killed. **Gluten and allergens** come second. For packaged food, the **Ledger health rating** (nutrition, processing and additives) is shown underneath as extra information.
+
+## Gluten-free and allergens
+
+- **Gluten-free category** in the index (ingredients, additives, drinks and dishes with no gluten source). Every entry and product shows *Gluten-free*, *Contains gluten*, *May contain gluten* or *depends*.
+- **The 14 allergens** that EU labels must declare (Regulation (EU) 1169/2011, Annex II; this also covers the US "Big 9"). They are read from the product's declared allergens and traces (Open Food Facts) and from a scan of the ingredient text. The legal exemptions are applied: wheat glucose syrups and maltodextrin, fully refined soya oil, distilled spirits, and fish gelatine used as a fining agent.
+- **My profile** (top right): choose your diet, *I avoid gluten*, and your allergens. Every result then warns "Contains your allergen" or "May contain your allergen". It is saved in your browser only.
+
+## Ledger health rating (our own, evidence-based)
+
+For packaged food, a rating out of 100 built from published standards. Each part is weighted by how strong the peer-reviewed evidence behind it is:
+
+| Part | Weight | Standard | Evidence |
+|---|---|---|---|
+| Nutrition | 50% | Nutri-Score (A=100 … E=0), the EU front-of-pack standard derived from the UK FSA nutrient profiling model | In the EPIC cohort (471,495 adults), a diet of lower Nutri-Score quality predicted higher cancer risk ([Deschasaux et al., PLoS Med 2018](https://doi.org/10.1371/journal.pmed.1002651)) |
+| Processing | 25% | NOVA (1=100, 2=80, 3=60, 4 ultra-processed=0) ([Monteiro et al. 2018](https://doi.org/10.1017/S1368980017000234)) | An umbrella review of 45 meta-analyses (about 10 million people) linked ultra-processed food to 32 health outcomes ([Lane et al., BMJ 2024](https://doi.org/10.1136/bmj-2023-077310)); an NIH randomised trial found about 500 extra kcal a day on an ultra-processed diet ([Hall et al., Cell Metab 2019](https://doi.org/10.1016/j.cmet.2019.05.008)) |
+| Additives | 25% | Start at 100, minus 40 per high-risk, 20 per moderate and 8 per limited additive | Regulator and IARC decisions only (below) |
+| Organic | 0% | Shown, not scored | Lower pesticide residues but no clear nutritional or health advantage ([Smith-Spangler et al., Ann Intern Med 2012](https://doi.org/10.7326/0003-4819-157-5-201209040-00007)) |
+
+A high-risk additive caps the rating at 39. Bands: 80+ Excellent, 60–79 Good, 40–59 Fair, 20–39 Limit, under 20 Poor. If NOVA is missing, its weight is shared between nutrition and additives; with no Nutri-Score there is no rating. Sugar, salt and fat use the [UK front-of-pack traffic-light thresholds](https://www.gov.uk/government/publications/front-of-pack-nutrition-labelling-guidance). Each product also gets **better alternatives**: same category, rated Good or better, matching your diet and allergens. Products you scan are kept in a **Recently checked** list.
+
+Additive risk levels are evidence-based only, and each one names its source:
+- **High:** withdrawn or not authorised in the EU (e.g. E171), or classed by IARC as Group 1 or 2A as used in food (e.g. nitrites).
+- **Moderate:** a mandatory EU warning label (the "Southampton" colours), banned or revoked in the US (e.g. Red No. 3), or IARC Group 2B (e.g. aspartame, BHA).
+- **Limited:** EFSA found intake can exceed the safe level for some groups (phosphates, glutamates), or a mandatory laxative warning (polyols).
+
+
+## Medicines: evidence-based side effects
+
+- **Side effects** come word for word from the official FDA-approved label (openFDA): the boxed warning, the most common adverse reactions, contraindications, and warnings. These sections come from clinical trials and post-marketing data reviewed by the FDA.
+- **Component warnings** for excipients use the wording that EU leaflets are required to carry under the European Commission/EMA excipient guideline (lactose, wheat starch, aspartame, sorbitol, peanut/soya oil, azo colours, sulphites, benzyl alcohol, PEG, parabens and others), plus FDA labelling rules and CDC/ACIP vaccine guidance (egg, gelatin, trace antibiotics, latex).
 
 ## What it does
 
@@ -39,11 +73,11 @@ A single static page: no accounts, no tracking, no server of its own. It works o
 
 | Source | Used for | Key |
 |---|---|---|
-| Open Food Facts (+ search-a-licious, ingredient taxonomy) | Packaged food & drink, barcodes, per-ingredient analysis | none |
+| Open Food Facts (+ search-a-licious, ingredient taxonomy) | Packaged food & drink, barcodes, per-ingredient analysis, allergens, Nutri-Score, NOVA, additives, alternatives | none |
 | Open Beauty Facts / Open Products Facts | Personal care & other consumables (barcode fallback) | none |
 | Open Prices | Where and when a product was on a shop shelf | none |
 | USDA FoodData Central | Generic (unbranded) foods and US branded foods with full ingredients | `DEMO_KEY` (or your own free key) |
-| openFDA drug labels, NIH DailyMed | Medicine & vaccine excipients (inactive ingredients) | none |
+| openFDA drug labels, NIH DailyMed | Medicine & vaccine excipients (inactive ingredients), label side effects | none |
 | NIH RxNorm | Medicine name spelling suggestions | none |
 | TheMealDB, TheCocktailDB | Recipes & cocktails, every ingredient checked | public test key |
 | Fruityvice | Whole-fruit facts | none |

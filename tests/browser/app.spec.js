@@ -48,7 +48,7 @@ for (const viewport of viewports) {
     await page.setViewportSize(viewport.size);
     await page.goto("/#search");
 
-    await expect(page.getByRole("heading", { name: /Vegan, vegetarian, or non-veg\?/ })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /Vegan, vegetarian, Lacto-vegetarian, or non-veg\?/ })).toBeVisible();
     await expect(page.locator("#home")).toBeVisible();
     await expect(page.locator("#tiles .tile").first()).toBeVisible();
     await capture(page, `search-home-${viewport.name}.png`);
@@ -234,4 +234,37 @@ test("Place search works worldwide: village suggestions and a city picker for st
   await page.locator("#place").fill("Kerala");
   await page.locator("#eatgo").click();
   await expect(page.locator("[data-bigcity]")).toHaveText(["Kochi"]);
+});
+
+test("Gluten-free category, allergen profile and Ledger health rating on a product", async ({ page }) => {
+  const product = { code: "3017620422003", product_name: "Choco Hazel Spread", brands: "TestBrand",
+    ingredients_text: "Sugar, palm oil, hazelnuts 13%, skimmed milk powder, emulsifier: lecithins (soya). May contain wheat.",
+    ingredients_analysis_tags: ["en:non-vegan", "en:vegetarian"], allergens_tags: ["en:milk", "en:nuts", "en:soybeans"], traces_tags: ["en:gluten"],
+    additives_tags: ["en:e322", "en:e171"], labels_tags: [], nutriscore_grade: "e", nova_group: 4,
+    image_nutrition_url: "https://images.openfoodfacts.org/images/products/301/762/042/2003/nutrition_en.jpg" };
+  await page.route("**/*", route => {
+    const url = new URL(route.request().url());
+    if (url.origin === appOrigin) return route.continue();
+    if (url.pathname.includes("/api/v2/product/")) return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ status: 1, product }) });
+    return route.abort();
+  });
+  await page.goto("/#index");
+  await page.locator("#catchips").getByRole("button", { name: /^Gluten-free/ }).click();
+  await expect(page.locator("#ilist .card").first().locator(".gfbadge")).toHaveText("Gluten-free");
+
+  await page.locator("#profbtn").click();
+  await page.locator("#algpick label", { hasText: "Tree nuts" }).click();
+  await page.locator("#profdlg .btn.clay").click();
+  await expect(page.locator("#profsum")).toContainText("tree nuts allergy");
+
+  await page.getByRole("tab", { name: "Search" }).click();
+  const box = page.getByRole("searchbox", { name: /Search any ingredient/ });
+  await box.fill("3017620422003");
+  await box.press("Enter");
+  const card = page.locator("#sec-food .product").first();
+  await expect(card.locator(".aalert")).toContainText("Contains your allergen: Tree nuts");
+  await expect(card.locator(".gfbadge")).toHaveText("May contain gluten");
+  await expect(card.locator(".healthwrap > summary .minis")).toHaveText(/^\d+$/);
+  await expect(card.locator(".labellink").first()).toContainText("Nutrition label");
+  await expect(card.locator(".labellink").first()).toHaveAttribute("href", /nutrition_en\.jpg$/);
 });
